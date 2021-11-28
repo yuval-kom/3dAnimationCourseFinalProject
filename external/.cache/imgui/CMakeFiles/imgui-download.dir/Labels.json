@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/imgui-download"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/63986c1cd0e6c04270494d2674e3a99c/imgui-download.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/06d9fd06dd9cdd44e9ea02018e45b2eb/imgui-download-complete.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-build.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-configure.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-download.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-install.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-mkdir.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-patch.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-test.rule"
+		},
+		{
+			"file" : "C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/276140a0d05a92af8ae129018c902287/imgui-download-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"imgui-download"
+		],
+		"name" : "imgui-download"
+	}
+}

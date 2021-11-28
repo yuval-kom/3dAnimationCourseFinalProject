@@ -1,0 +1,162 @@
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/cmake/../external/eigen
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/build/eigen-build
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/tmp
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-DOWNLOAD.RULE
+setlocal
+cd C:\AnimationCourseEngine\external
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/tmp/eigen-download-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-UPDATE.RULE
+setlocal
+cd C:\AnimationCourseEngine\external\eigen
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/tmp/eigen-download-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-PATCH.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-CONFIGURE.RULE
+setlocal
+cd C:\AnimationCourseEngine\build\eigen-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-BUILD.RULE
+setlocal
+cd C:\AnimationCourseEngine\build\eigen-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-INSTALL.RULE
+setlocal
+cd C:\AnimationCourseEngine\build\eigen-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\0687499CFF61667F044959B3870FEE76\EIGEN-DOWNLOAD-TEST.RULE
+setlocal
+cd C:\AnimationCourseEngine\build\eigen-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\9EA6902DDC140B2731390F0CDDE10674\EIGEN-DOWNLOAD-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/eigen/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/CMakeFiles/Debug/eigen-download-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/eigen/eigen-download-prefix/src/eigen-download-stamp/Debug/eigen-download-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKEFILES\800D058414D560DF73FC97F8A8A0CA85\EIGEN-DOWNLOAD.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\EIGEN\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/eigen -BC:/AnimationCourseEngine/external/.cache/eigen --check-stamp-file C:/AnimationCourseEngine/external/.cache/eigen/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\6639d8bbc95f0f631f5271360c81c0da\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{F11CA5C1-0702-3570-ABBC-6911F7707DD7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3 @@
+C:/AnimationCourseEngine/external/.cache/stb/CMakeFiles/stb-download.dir
+C:/AnimationCourseEngine/external/.cache/stb/CMakeFiles/ALL_BUILD.dir
+C:/AnimationCourseEngine/external/.cache/stb/CMakeFiles/ZERO_CHECK.dir
