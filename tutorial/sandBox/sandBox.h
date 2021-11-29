@@ -22,7 +22,6 @@ public:
 	void initDataStructure(Eigen::MatrixXd&, Eigen::MatrixXi&);
 	void simplification();
 
-	
 
 private:
 	// Prepare array-based edge data structures and priority queue
@@ -34,6 +33,11 @@ private:
 	vector<Eigen::MatrixXd*> C;
 	vector<int> num_collapsed;
 
-	void Animate();
-};
+	vector<vector<Eigen::Matrix4d>> vertexsQ;
+	vector<int> currCollapseEdge;
 
+	void calc_vertex_cost(const Eigen::MatrixXd& V, const Eigen::MatrixXi& F, const Eigen::MatrixXi& E);
+	void printInfo(const int e, double& cost,Eigen::RowVectorXd& p);
+	void Animate();
+	
+};
