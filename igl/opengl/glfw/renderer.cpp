@@ -117,6 +117,8 @@ IGL_INLINE void Renderer::init(igl::opengl::glfw::Viewer* viewer,int coresNum, i
 			core().toggle(scn->data_list[i].show_faces);
 			core().toggle(scn->data_list[i].show_lines);
 			core().toggle(scn->data_list[i].show_texture );
+			core().toggle(scn->data_list[i].show_overlay);
+			core().toggle(scn->data_list[i].show_overlay_depth);
 		}
 		//Eigen::Vector3d v = -scn->GetCameraPosition();
 		//TranslateCamera(v.cast<float>());

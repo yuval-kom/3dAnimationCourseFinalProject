@@ -21,6 +21,8 @@ public:
 	double doubleVariable;
 	void initDataStructure(Eigen::MatrixXd&, Eigen::MatrixXi&);
 	void simplification();
+	//Assignment2
+	void translateData(Eigen::Vector3d dir);
 
 
 private:
@@ -38,6 +40,17 @@ private:
 
 	void calc_vertex_cost(const Eigen::MatrixXd& V, const Eigen::MatrixXi& F, const Eigen::MatrixXi& E);
 	void printInfo(const int e, double& cost,Eigen::RowVectorXd& p);
+
+	//Assignmet 2
+	double pos = -1;
+	vector<igl::AABB<Eigen::MatrixXd, 3>*> trees;
+	vector<igl::AABB<Eigen::MatrixXd, 3>*> subTrees;
+	
+	vector<Eigen::Vector3d> velocities;
+	void drawBox(Eigen::AlignedBox<double, 3>* box, size_t index);
+	bool checkConditions(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
+	bool collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
+	
 	void Animate();
 	
 };

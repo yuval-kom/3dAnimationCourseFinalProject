@@ -8,6 +8,7 @@
 
 using namespace Eigen;
 using namespace igl;
+using namespace std;
 
 SandBox::SandBox()
 {
@@ -40,6 +41,10 @@ void SandBox::Init(const std::string& config)
             data().line_width = 2;
             data().set_visible(false, 1);
             initDataStructure(data().V, data().F);
+            //Assignemt 2
+            data().MyTranslate(Eigen::Vector3d(pos, 0, -1), true);
+            pos = pos + 1;
+            drawBox(&trees[selected_data_index]->m_box, selected_data_index);
 
         }
         nameFileout.close();
@@ -82,6 +87,49 @@ void SandBox::calc_vertex_cost(const Eigen::MatrixXd& V,
 
 }
 
+void SandBox::drawBox(AlignedBox<double, 3>* box , size_t index) {
+
+    VectorXd c = box->center();
+    Eigen::MatrixXd V_box(8, 3);
+    V_box <<
+       c.x() - box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
+       c.x() - box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() + box->sizes()(2)/2,
+       c.x() - box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
+       c.x() + box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
+       c.x() - box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() + box->sizes()(2)/2,
+       c.x() + box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
+       c.x() + box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() + box->sizes()(2)/2,
+       c.x() + box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() + box->sizes()(2)/2;
+
+    // Edges of the bounding box
+    Eigen::MatrixXi E_box(12, 2);
+    E_box <<
+        0, 1,
+        0, 2,
+        1, 4,
+        3, 0,
+        1, 6,
+        2, 4,
+        2, 5,
+        6, 3,
+        5, 3,
+        7, 5,
+        7, 6,
+        7, 4;
+
+    data_list[index].add_points(V_box, Eigen::RowVector3d(1, 0, 0));
+
+    for (unsigned i = 0; i < E_box.rows(); ++i)
+        data_list[index].add_edges
+        (
+            V_box.row(E_box(i, 0)),
+            V_box.row(E_box(i, 1)),
+            Eigen::RowVector3d(1, 0, 0)
+        );
+}
+
+
+
 void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
 {
     const auto& calc_edge_cost = [&](const int e,
@@ -110,6 +158,7 @@ void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
     VectorXi* EMAPtmp = new VectorXi();
     SandBox::PriorityQueue* Qtmp = new SandBox::PriorityQueue;
     vector<SandBox::PriorityQueue::iterator> QitTmp;
+    
 
     edge_flaps(F, *Etmp, *EMAPtmp, *EFtmp, *EItmp);
 
@@ -137,6 +186,14 @@ void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
     num_collapsed.push_back(0);
 
     currCollapseEdge.push_back(-1);
+
+    //Assingment 2
+    AABB<MatrixXd, 3>* treeTmp = new AABB<MatrixXd, 3>;
+    treeTmp->init(data().V, data().F);
+    trees.push_back(treeTmp);
+    subTrees.push_back(treeTmp);
+    velocities.push_back(Eigen::Vector3d(-0.009, 0, 0));
+    
 }
 
 
@@ -216,12 +273,195 @@ void SandBox::simplification()
     }
 }
 
+
+bool SandBox::checkConditions(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i) {
+
+    AlignedBox<double, 3> boxA = Atree->m_box;
+    AlignedBox<double, 3> boxB = Btree->m_box;
+
+    size_t currData = selected_data_index;
+
+    Vector4d C0;
+    C0 << boxA.center()(0), boxA.center()(1), boxA.center()(2), 1;
+    VectorXd center0 = data_list[currData].MakeTransd() * C0 ;
+
+    Vector4d C1;
+    C1 << boxB.center()(0), boxB.center()(1), boxB.center()(2), 1;
+    VectorXd center1 = data_list[i].MakeTransd() * C1;
+
+    MatrixXd A = data_list[currData].GetRotation();
+    MatrixXd B = data_list[i].GetRotation();
+    VectorXd A0 = A.row(0);
+    VectorXd A1 = A.row(1);
+    VectorXd A2 = A.row(2);
+
+    VectorXd B0 = B.row(0);
+    VectorXd B1 = B.row(1);
+    VectorXd B2 = B.row(2);
+
+    double a0 = boxA.sizes()[0]/2;
+    double a1 = boxA.sizes()[1]/2;
+    double a2 = boxA.sizes()[2]/2;
+
+    double b0 = boxB.sizes()[0]/2;
+    double b1 = boxB.sizes()[1]/2;
+    double b2 = boxB.sizes()[2]/2;
+
+    RowVector3d D = { center1(0) - center0(0), center1(1) - center0(1), center1(2) - center0(2) };
+   // D.conservativeResize(3);
+    MatrixXd C = A.transpose() * B;
+    Vector3d aIndex;
+    aIndex << a0, a1, a2;
+    Vector3d bIndex;
+    bIndex << b0, b1, b2;
+
+    VectorXd Aindex[3] = { A0, A1, A2 };
+    VectorXd Bindex[3] = { B0, B1, B2 };
+
+    //bool isCollided = true;
+    double R0 = 0;
+    double R1 = 0;
+    double R = 0;
+
+    //condition 1-6:
+    for (size_t i = 0; i < 3; i++) {
+        double R0 = aIndex[i];
+        double R1 = b0 * (abs(C(i, 0))) + b1 * (abs(C(i, 1))) + b2 * (abs(C(i, 2)));
+        double R = abs(Aindex[i].dot(D));
+        if (R > R0 + R1) {
+            return false;
+        }
+    }
+
+    for (size_t i = 0; i < 3; i++) {
+        double R0 = a0 * (abs(C(0, i))) + a1 * (abs(C(1, i))) + a2 * (abs(C(2, i)));
+        double R1 = bIndex[i];
+        double R = abs(Bindex[i].dot(D));
+        if (R > R0 + R1) {
+            return false;
+        }
+    }
+
+    //condition 7-15:
+
+    //A0xB0
+    R0 = a1 * abs(C(2, 0)) + a2 * abs(C(1, 0));
+    R1 = b1 * abs(C(0, 2)) + b2 * abs(C(0, 1));
+    R = abs(C(1, 0) * A2.dot(D) - C(2, 0) * A1.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    //A0xB1
+    R0 = a1 * abs(C(2, 1)) + a2 * abs(C(1, 1));
+    R1 = b0 * abs(C(0, 2)) + b2 * abs(C(0, 0));
+    R = abs(C(1, 1) * A2.dot(D) - C(2, 1) * A1.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    //A0xB2
+    R0 = a1 * abs(C(2, 2)) + a2 * abs(C(1, 2));
+    R1 = b0 * abs(C(0, 1)) + b1 * abs(C(0, 0));
+    R = abs(C(1, 2) * A2.dot(D) - C(2, 2) * A1.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    //A1xB0
+    R0 = a0 * abs(C(2, 0)) + a2 * abs(C(0, 0));
+    R1 = b1 * abs(C(1, 2)) + b2 * abs(C(1, 1));
+    R = abs(C(2, 0) * A0.dot(D) - C(0, 0) * A2.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    //A1xB1
+    R0 = a0 * abs(C(2, 1)) + a2 * abs(C(0, 1));
+    R1 = b1 * abs(C(1, 2)) + b2 * abs(C(1, 0));
+    R = abs(C(2, 1) * A0.dot(D) - C(0, 1) * A2.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    //A1xB2
+    R0 = a0 * abs(C(2, 2)) + a2 * abs(C(0, 2));
+    R1 = b1 * abs(C(1, 1)) + b1 * abs(C(1, 0));
+    R = abs(C(2, 2) * A0.dot(D) - C(0, 2) * A2.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    //A2xB0
+    R0 = a0 * abs(C(1, 0)) + a1 * abs(C(0, 0));
+    R1 = b1 * abs(C(2, 2)) + b2 * abs(C(2, 1));
+    R = abs(C(0, 0) * A1.dot(D) - C(1, 0) * A0.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    //A2xB1
+    R0 = a0 * abs(C(1, 1)) + a1 * abs(C(0, 1));
+    R1 = b0 * abs(C(2, 2)) + b2 * abs(C(2, 0));
+    R = abs(C(0, 1) * A1.dot(D) - C(1, 1) * A0.dot(D));
+    if (R > R0 + R1){
+        return false;
+    }
+
+    //A2xB2
+    R0 = a0 * abs(C(1, 2)) + a1 * abs(C(0, 2));
+    R1 = b0 * abs(C(2, 1)) + b1 * abs(C(2, 0));
+    R = abs(C(0, 2) * A1.dot(D) - C(1, 2) * A0.dot(D));
+    if (R > R0 + R1) {
+        return false;
+    }
+
+    return true;
+}
+bool SandBox::collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i)
+{    
+    bool isCollided = checkConditions(Atree, Btree, i);
+    
+    if (isCollided) {
+        if (Atree->is_leaf() && Btree->is_leaf()) {
+            subTrees[selected_data_index] = Atree;
+            subTrees[i] = Btree;
+            return true;
+        }
+        else if (Atree->is_leaf()) {
+            return((collisionDetec(Atree, Btree->m_left,i)) || collisionDetec(Atree, Btree->m_right,i));
+        }
+        else if(Btree->is_leaf()){
+            return((collisionDetec(Atree->m_left, Btree,i)) || collisionDetec(Atree->m_right, Btree,i));
+         }
+        else {
+            return((collisionDetec(Atree->m_left, Btree->m_left,i)) || collisionDetec(Atree->m_left, Btree->m_right,i)
+                || collisionDetec(Atree->m_right, Btree->m_left,i) || collisionDetec(Atree->m_right, Btree->m_right,i));
+        }
+    }
+    return false;
+}
+
+void SandBox::translateData(Eigen::Vector3d dir) {
+    velocities[selected_data_index] = dir;
+}
+
 void SandBox::Animate()
 {
+    SetAnimation();
     if (isActive)
     {
-
-
-
+            for (size_t i = 0; i < data_list.size(); i++) {
+                if (i != selected_data_index){
+                    if (collisionDetec(trees[selected_data_index], trees[i], i)) {
+                        drawBox(&subTrees[selected_data_index]->m_box, selected_data_index);
+                        drawBox(&subTrees[i]->m_box, i);
+                    }
+                    else
+                    {
+                      data().MyTranslate(velocities[selected_data_index], true);
+                    }
+                }
+            }
     }
 }
