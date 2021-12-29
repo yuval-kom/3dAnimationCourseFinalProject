@@ -11,7 +11,6 @@
 #include <igl/opengl/glfw/Viewer.h>
 
 using namespace std;
-
 class SandBox : public igl::opengl::glfw::Viewer
 {
 public:
@@ -23,6 +22,26 @@ public:
 	void simplification();
 	//Assignment2
 	void translateData(Eigen::Vector3d dir);
+
+	//Assignmet3
+	
+	Eigen::Vector3d destination_position = Eigen::Vector3d(5, 0, 0);
+	Eigen::Vector3d startPos;
+
+    vector<Eigen::Vector3d> positions;
+	vector<Eigen::Vector3d> tmpPositions;
+	Eigen::Matrix3d CalcParentsRot(int indx);
+	Eigen::Vector3d getJoint(int indx);
+	void set_destination_pos();
+	void set_tip_pos();
+	void IK_solver();
+	void printEulerAngles();
+	void setEulerAngles();
+	void setPositions();
+	void backward();
+	void forward();
+	void RotateJoints();
+	void fabrik();
 
 
 private:
@@ -50,6 +69,11 @@ private:
 	void drawBox(Eigen::AlignedBox<double, 3>* box, size_t index);
 	bool checkConditions(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
 	bool collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
+
+	//Assignment 3
+	void setInitialPosition();
+	void drawAxis(size_t i);
+	bool isTooFar();
 	
 	void Animate();
 	

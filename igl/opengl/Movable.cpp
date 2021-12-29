@@ -63,6 +63,10 @@ void Movable::MyScale(Eigen::Vector3d amt)
 	Tin.scale(amt);
 }
 
+void Movable::SetCenterOfRotation(Eigen::Vector3d center) {
+	Tin.translate(-center);
+	Tout.pretranslate(center);
+}
 
 
 

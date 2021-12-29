@@ -28,36 +28,279 @@ void SandBox::Init(const std::string& config)
     }
     else
     {
-
+        
         while (nameFileout >> item_name)
         {
             std::cout << "openning " << item_name << std::endl;
             load_mesh_from_file(item_name);
-
-            parents.push_back(-1);
-            data().add_points(Eigen::RowVector3d(0, 0, 0), Eigen::RowVector3d(0, 0, 1));
-            data().show_overlay_depth = false;
+            data().show_overlay_depth = true;
+            data().show_texture = true;
             data().point_size = 10;
             data().line_width = 2;
+            data().show_overlay = 1;
+            data().show_lines = 1;
+            data().show_overlay_depth = 2;
             data().set_visible(false, 1);
-            initDataStructure(data().V, data().F);
-            //Assignemt 2
-            data().MyTranslate(Eigen::Vector3d(pos, 0, -1), true);
-            pos = pos + 1;
-            drawBox(&trees[selected_data_index]->m_box, selected_data_index);
+            parents.push_back(-1);
+            
+           // //Assignmet1
+           // initDataStructure(data().V, data().F);
+           // //Assignemt 2
+           //data().MyTranslate(Eigen::Vector3d(pos, 0, -1), true);
+           // pos = pos + 1.8;
+           // drawBox(&trees[selected_data_index]->m_box, selected_data_index);
 
         }
         nameFileout.close();
     }
-    MyTranslate(Eigen::Vector3d(0, 0, -1), true);
 
+    MyTranslate(Eigen::Vector3d(0, 0, -14), true);
+    //MyTranslate(Eigen::Vector3d(0, 0, -1), true);
     data().set_colors(Eigen::RowVector3d(0.9, 0.1, 0.1));
+
+    //Assignment3
+    setInitialPosition();
+    
 
 }
 
 SandBox::~SandBox()
 {
+    
 
+}
+
+void SandBox::setInitialPosition() {
+
+    data_list[0].MyTranslate(Vector3d(5, 0, 0), true);
+    for (size_t i = 1; i <= links_number; i++) {
+        data_list[i].MyTranslate(Vector3d(0, 0, link_Len), false);
+        data_list[i].SetCenterOfRotation(Eigen::Vector3d(0, 0, -0.8));
+        data_list[i].add_points(Eigen::RowVector3d(0, 0, -0.8), Eigen::RowVector3d(0, 0, 1));
+        drawAxis(i);
+        if(i > 1)
+            parents[i] = i - 1;
+    }
+    
+    
+}
+
+void SandBox::drawAxis(size_t i){
+    data_list[i].add_edges(Eigen::RowVector3d(-1.6, 0, 0.8), Eigen::RowVector3d(1.6, 0, 0.8), Eigen::RowVector3d(1, 0, 0)); // x axis - red
+    data_list[i].add_edges(Eigen::RowVector3d(0, -1.6, 0.8), Eigen::RowVector3d(0, 1.6, 0.8), Eigen::RowVector3d(0, 1, 0)); // y axis - green
+    data_list[i].add_edges(Eigen::RowVector3d(0, 0,-0.8), Eigen::RowVector3d(0, 0, 2.4), Eigen::RowVector3d(0, 0, 1)); // z axis - blue
+}
+
+void SandBox::set_destination_pos() {
+    
+    destination_position = (data_list[0].MakeTransd() * Vector4d(0,0, 0, 1)).head(3);
+
+}
+
+void SandBox::set_tip_pos() {  
+    tip_position = (CalcParentsTrans(links_number) * data_list[links_number].MakeTransd() * Vector4d(0, 0, (link_Len / 2),1)).head(3);
+}
+
+Vector3d SandBox::getJoint(int indx) {
+    Vector3d joint =  data_list[1].GetRotation() * Vector3d(0, 0, -link_Len / 2);
+    for (size_t i = 1; i <= indx; i++) {
+        Matrix3d R = CalcParentsRot(i);
+        joint = joint + R * Vector3d(0, 0, link_Len);
+    }
+
+    return joint;
+}
+
+
+Eigen::Matrix3d SandBox::CalcParentsRot(int indx)
+{
+    Eigen::Matrix3d prevRot = Eigen::Matrix3d::Identity();
+
+    for (int i = indx; parents[i] >= 0; i = parents[i])
+    {
+        prevRot = data_list[i].GetRotation() * prevRot;
+    }
+
+    return prevRot;
+}
+
+bool SandBox::isTooFar() {
+    Vector3d FirstLink = (data_list[1].MakeTransd() * Vector4d(0, 0, -(link_Len/2),1)).head(3);
+    double distance = (destination_position - FirstLink).norm();
+    if (distance > links_number * link_Len)
+        return true;
+    return false;
+}
+
+void SandBox::IK_solver(){
+
+    set_destination_pos();
+    set_tip_pos();
+    if (isTooFar())
+    {
+        cout << "cannot reach" << endl;
+        return;
+    }
+    for (size_t i = links_number; i > 0; i--) {
+        
+        Vector3d E = tip_position;
+        Vector3d D = destination_position;
+        Vector3d R = getJoint(i);
+        Vector3d RE = (E - R).normalized();
+        Vector3d RD = (D - R).normalized();
+
+        double distance = (D - E).norm();
+        if (distance < 0.1) {
+            isActive = false;
+            setEulerAngles();
+            std::cout << "distance " << distance << endl;
+            return;
+        }
+        
+        double cos_angle = RE.dot(RD);
+        if (cos_angle < -1) {
+            cos_angle = -1;
+        }
+        else if (cos_angle > 1) {
+            cos_angle = 1;
+        }
+        
+        Eigen::Vector3d vecToRotate = RE.cross(RD);
+        double angle = acos(cos_angle)/10;
+
+        data_list[i].RotateInSystem(vecToRotate, angle);
+        set_tip_pos();
+    }
+
+}
+void SandBox::setEulerAngles() {
+
+    for (size_t i = 1; i <= links_number; i++) {
+        double phi = data_list[i].GetRotation().eulerAngles(2, 0, 2)[0];
+        double theta = data_list[i].GetRotation().eulerAngles(2, 0, 2)[1];
+        double  psi = data_list[i].GetRotation().eulerAngles(2, 0, 2)[2];
+
+        Matrix3d A1;
+        Matrix3d A2;
+        Matrix3d A3;
+        A1 << cos(phi), -sin(phi), 0,
+            sin(phi), cos(phi), 0,
+            0, 0, 1;
+
+        A2 << 1, 0, 0,
+            0, cos(theta), -sin(theta),
+            0, sin(theta), cos(theta);
+
+        A3 << cos(psi), -sin(psi), 0,
+            sin(psi), cos(psi), 0,
+            0, 0, 1;
+
+
+        data_list[i].MyRotate(data_list[i].GetRotation().transpose());
+        data_list[i].SetRotation(A1*A2 *A3);
+        
+    }
+  
+}
+
+void SandBox::printEulerAngles(){
+
+        double phi = data().GetRotation().eulerAngles(2, 0, 2)[0];
+        double theta = data().GetRotation().eulerAngles(2, 0, 2)[1];
+
+        Matrix3d A1;
+        Matrix3d A2;
+        A1 << cos(phi), -sin(phi), 0,
+            sin(phi), cos(phi), 0,
+            0, 0, 1;
+
+        A2 << 1, 0, 0,
+            0, cos(theta), -sin(theta),
+            0, sin(theta), cos(theta);
+
+        cout << " EulerAngles matrix: " << endl;
+        cout << "phi: " << A1 << endl;
+        cout << "theta: " << A2 << endl;
+
+}
+
+
+void SandBox::setPositions() {
+    set_tip_pos();
+
+    for (int i = 1; i <= links_number; i++) {
+       positions[i -1] = getJoint(i);
+    }
+    startPos = positions[0];
+    positions[links_number] = tip_position;
+}
+
+//from linknum to 1
+void SandBox::forward() {
+    tmpPositions[links_number] = destination_position;
+    for (signed int i = links_number - 1; i >= 0; i--){
+            double ri = (tmpPositions[i + 1] - tmpPositions[i]).norm();
+            double lambda = 1.6 / ri;
+            Vector3d newPos = (((1-lambda) * tmpPositions[i + 1]) + (lambda * tmpPositions[i])).normalized();
+            tmpPositions[i] = newPos;
+    }
+}
+
+//from 1 to linknum
+void SandBox::backward() {
+    tmpPositions[0] = startPos;
+    for (size_t i = 0; i < links_number; i++) {
+        double ri = (tmpPositions[i + 1] - tmpPositions[i]).norm();
+        double lambda = 1.6 / ri;
+        Vector3d newPos = (((1 - lambda) * tmpPositions[i]) + (lambda * tmpPositions[i+1])).normalized();
+
+        tmpPositions[i+1] = newPos;
+    }
+}
+
+void SandBox::RotateJoints() {
+    for (size_t i = 0; i < links_number; i++) {
+
+        Vector3d oldVector = (positions[i +1] - positions[i]).normalized();
+        Vector3d newVector = (tmpPositions[i + 1] - tmpPositions[i]).normalized();
+
+        double cos_angle = newVector.dot(oldVector);
+        if (cos_angle < -1) {
+            cos_angle = -1;
+        }
+        else if (cos_angle > 1) {
+            cos_angle = 1;
+        }
+        Eigen::Vector3d vecToRotate = newVector.cross(oldVector);
+        double angle = acos(cos_angle) / 10;
+
+        data_list[i+1].MyRotate((CalcParentsRot(i+1) * data_list[i+1].GetRotation()).inverse() * (-vecToRotate), angle);
+        setPositions();
+    }
+}
+
+void SandBox::fabrik() {
+    
+    double distance = (tip_position - destination_position).norm();
+    if (isTooFar())
+    {
+        cout << "cannot reach" << endl;
+        isActive = false;
+        return;
+    }
+    if (distance > 0.1)
+    {
+        tmpPositions = positions;
+        forward();
+        backward();
+        RotateJoints();
+    }
+    else {
+        cout << "distance: " << distance << endl;
+        isActive = false;
+        return;
+    }
+   
 }
 
 
@@ -448,10 +691,17 @@ void SandBox::translateData(Eigen::Vector3d dir) {
 
 void SandBox::Animate()
 {
-    SetAnimation();
+    //Assignment2
+    //
+    
     if (isActive)
     {
-            for (size_t i = 0; i < data_list.size(); i++) {
+        //IK_solver();
+        //set_tip_pos();
+        //setPositions();
+        fabrik();
+            //Assignment2
+            /*for (size_t i = 0; i < data_list.size(); i++) {
                 if (i != selected_data_index){
                     if (collisionDetec(trees[selected_data_index], trees[i], i)) {
                         drawBox(&subTrees[selected_data_index]->m_box, selected_data_index);
@@ -462,6 +712,6 @@ void SandBox::Animate()
                       data().MyTranslate(velocities[selected_data_index], true);
                     }
                 }
-            }
+            }*/
     }
 }

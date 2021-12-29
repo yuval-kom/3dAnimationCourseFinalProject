@@ -123,6 +123,9 @@ namespace glfw
 
 	Eigen::Matrix4d CalcParentsTrans(int indx);
 	inline bool SetAnimation() { return isActive = !isActive; }
+
+    //For Assignmet3
+    void AddNewShape(int savedIndx);
 public:
     //////////////////////
     // Member variables //
@@ -140,7 +143,9 @@ public:
 	bool isPicked;
 	bool isActive;
 
-    
+    int links_number = 3;
+    double link_Len = 1.6;
+    Eigen::Vector3d tip_position = Eigen::Vector3d(0, 0, (links_number) * 1.6);
 
     // List of registered plugins
 //    std::vector<ViewerPlugin*> plugins;

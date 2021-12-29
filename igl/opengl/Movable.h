@@ -19,8 +19,11 @@ public:
 	void RotateInSystem(Eigen::Vector3d rotAxis, double angle);
 	void MyRotate(const Eigen::Matrix3d &rot);
 	void MyScale(Eigen::Vector3d amt);
+	void SetCenterOfRotation(Eigen::Vector3d center);
+	Eigen::Vector3d GetCenterOfRotation() { return -Tout.translation(); };
 
 	Eigen::Matrix3d GetRotation() const{ return Tout.rotation().matrix(); }
+	void SetRotation(Eigen::Matrix3d toSet) { Tout.rotate(toSet); }
 
 	virtual ~Movable() {}
 private:

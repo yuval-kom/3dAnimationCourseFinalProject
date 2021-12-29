@@ -46,8 +46,7 @@
 //static igl::opengl::glfw::Viewer * __viewer;
 static double highdpi = 1;
 static double scroll_x = 0;
-static double scroll_y = 0;
-
+static double scroll_y = 0; 
 
 namespace igl
 {
@@ -180,7 +179,6 @@ namespace glfw
     //for (unsigned int i = 0; i<plugins.size(); ++i)
     //  if (plugins[i]->post_load())
     //    return true;
-
     return true;
   }
 
@@ -267,6 +265,7 @@ namespace glfw
       return;
     
     this->load_mesh_from_file(fname.c_str());
+
   }
 
   IGL_INLINE void Viewer::open_dialog_save_mesh()
@@ -361,6 +360,25 @@ namespace glfw
 	  }
 
 	  return prevTrans;
+  }
+
+  void Viewer::AddNewShape(int savedIndx) {
+
+      parents.push_back(-1);
+      data_list.back().set_visible(false, 1);
+      data_list.back().set_visible(true, 2);
+      data_list.back().show_faces = 3;
+      data_list.back().show_overlay_depth = true;
+      data().point_size = 10;
+      data().line_width = 2;
+      data_list.back().show_overlay = 1;
+      data_list.back().show_lines = 1;
+      selected_data_index = savedIndx;
+      links_number++;
+      parents[links_number] = links_number - 1;
+      data_list[links_number].MyTranslate(Eigen::Vector3d(0, 0, link_Len), false);
+      data_list[links_number].SetCenterOfRotation(Eigen::Vector3d(0, 0, -0.8));
+      tip_position = Eigen::Vector3d(0, 0, links_number * 1.6);  
   }
 
 } // end namespace
