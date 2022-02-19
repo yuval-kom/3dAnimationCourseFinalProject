@@ -10,6 +10,61 @@
 #include <igl/get_seconds.h>
 #include "igl/opengl/glfw/renderer.h"
 
+#include <external/learnopengl/filesystem.h>
+#include <external/learnopengl/shader_m.h>
+#include <external/learnopengl/camera.h>
+#include <external/learnopengl/model.h>
+#include <external/glm/vec3.hpp>
+#include <external/glm/matrix.hpp>
+#include <external/stb/stb_image.h>
+
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+
+float DayLightBoxV[] = {
+	-1.0f,  1.0f, -1.0f,
+	-1.0f, -1.0f, -1.0f,
+	 1.0f, -1.0f, -1.0f,
+	 1.0f, -1.0f, -1.0f,
+	 1.0f,  1.0f, -1.0f,
+	-1.0f,  1.0f, -1.0f,
+
+	-1.0f, -1.0f,  1.0f,
+	-1.0f, -1.0f, -1.0f,
+	-1.0f,  1.0f, -1.0f,
+	-1.0f,  1.0f, -1.0f,
+	-1.0f,  1.0f,  1.0f,
+	-1.0f, -1.0f,  1.0f,
+
+	 1.0f, -1.0f, -1.0f,
+	 1.0f, -1.0f,  1.0f,
+	 1.0f,  1.0f,  1.0f,
+	 1.0f,  1.0f,  1.0f,
+	 1.0f,  1.0f, -1.0f,
+	 1.0f, -1.0f, -1.0f,
+
+	-1.0f, -1.0f,  1.0f,
+	-1.0f,  1.0f,  1.0f,
+	 1.0f,  1.0f,  1.0f,
+	 1.0f,  1.0f,  1.0f,
+	 1.0f, -1.0f,  1.0f,
+	-1.0f, -1.0f,  1.0f,
+
+	-1.0f,  1.0f, -1.0f,
+	 1.0f,  1.0f, -1.0f,
+	 1.0f,  1.0f,  1.0f,
+	 1.0f,  1.0f,  1.0f,
+	-1.0f,  1.0f,  1.0f,
+	-1.0f,  1.0f, -1.0f,
+
+	-1.0f, -1.0f, -1.0f,
+	-1.0f, -1.0f,  1.0f,
+	 1.0f, -1.0f, -1.0f,
+	 1.0f, -1.0f, -1.0f,
+	-1.0f, -1.0f,  1.0f,
+	 1.0f, -1.0f,  1.0f
+};
+
+
 static void glfw_error_callback(int error, const char* description)
 {
 	fputs(description, stderr);
@@ -108,6 +163,36 @@ Display::Display(int windowWidth, int windowHeight, const std::string& title)
 
 bool Display::launch_rendering(bool loop)
 {
+	//CUBE MAP
+	//Shader DaylightBoxShader("C:/FinalProjectAnimation/Shaders/daylightbox.vs", "C:/FinalProjectAnimation/Shaders/daylightbox.fs");
+	//unsigned int boxVAO, boxVBO;
+	//glGenVertexArrays(1, &boxVAO);
+	//glGenBuffers(1, &boxVBO);
+	//glBindVertexArray(boxVAO);
+	//glBindBuffer(GL_ARRAY_BUFFER, boxVBO);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(DayLightBoxV), &DayLightBoxV, GL_STATIC_DRAW);
+	//glEnableVertexAttribArray(0);
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+
+	//std::vector<std::string> faces
+	//{
+	//	//C:\FinalProjectAnimation\textures\DayLightBox
+	//	"C:/FinalProjectAnimation/textures/DayLightBox/Right.jpg",
+	//	"C:/FinalProjectAnimation/textures/DayLightBox/Left.jpg",
+	//	"C:/FinalProjectAnimation/textures/DayLightBox/Top.jpg",
+	//	"C:/FinalProjectAnimation/textures/DayLightBox/Bottom.jpg",
+	//	"C:/FinalProjectAnimation/textures/DayLightBox/Back.jpg",
+	//	"C:/FinalProjectAnimation/textures/DayLightBox/Front.jpg"
+
+	//};
+
+	//unsigned int cubemapTexture = this->loadCubemap(faces);
+
+	//DaylightBoxShader.use();
+	//DaylightBoxShader.setInt("daylightbox", 0);
+
+
 	// glfwMakeContextCurrent(window);
 	// Rendering loop
 	const int num_extra_frames = 5;
@@ -117,7 +202,7 @@ bool Display::launch_rendering(bool loop)
 	Renderer* renderer = (Renderer*)glfwGetWindowUserPointer(window);
 	glfwGetWindowSize(window, &windowWidth, &windowHeight);
 	renderer->post_resize(window, windowWidth, windowHeight);
-	for(int i=0;i< renderer->GetScene()->data_list.size();i++)
+	for (int i = 0; i < renderer->GetScene()->data_list.size(); i++)
 		renderer->core().toggle(renderer->GetScene()->data_list[i].show_lines);
 	while (!glfwWindowShouldClose(window))
 	{
@@ -125,6 +210,23 @@ bool Display::launch_rendering(bool loop)
 		double tic = igl::get_seconds();
 		renderer->Animate();
 		renderer->draw(window);
+
+
+		//CUBE MAP
+		/*glm::mat4 view = camera.GetViewMatrix();
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)1000 / 800, 0.1f, 100.0f);
+		glDepthFunc(GL_LEQUAL);
+		DaylightBoxShader.use();
+		view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
+		DaylightBoxShader.setMat4("view", view);
+		DaylightBoxShader.setMat4("projection", projection);
+		glBindVertexArray(boxVAO);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glBindVertexArray(0);
+		glDepthFunc(GL_LESS);*/
+
 		glfwSwapBuffers(window);
 		if (renderer->core().is_animating || frame_counter++ < num_extra_frames)
 		{//motion
@@ -153,7 +255,7 @@ bool Display::launch_rendering(bool loop)
 			first_time_hack = false;
 		}
 #endif
-	}
+}
 	return EXIT_SUCCESS;
 }
 
@@ -195,6 +297,72 @@ void Display::SwapBuffers()
 void Display::PollEvents()
 {
 	glfwPollEvents();
+}
+
+unsigned int Display::loadTexture(char const* path) {
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+
+	int width, height, nrComponents;
+	unsigned char* data = stbi_load(path, &width, &height, &nrComponents, 0);
+	if (data)
+	{
+		GLenum format;
+		if (nrComponents == 1)
+			format = GL_RED;
+		else if (nrComponents == 3)
+			format = GL_RGB;
+		else if (nrComponents == 4)
+			format = GL_RGBA;
+
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_image_free(data);
+	}
+	else
+	{
+		std::cout << "Texture failed to load at path: " << path << std::endl;
+		stbi_image_free(data);
+	}
+
+	return textureID;
+}
+
+unsigned int Display::loadCubemap(std::vector<std::string> faces)
+{
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+	int width, height, nrChannels;
+	for (unsigned int i = 0; i < faces.size(); i++)
+	{
+		unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+		if (data)
+		{
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
+		}
+		else
+		{
+			std::cout << "Cubemap texture failed to load at path: " << faces[i] << std::endl;
+			stbi_image_free(data);
+		}
+	}
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+	return textureID;
 }
 
 Display::~Display()

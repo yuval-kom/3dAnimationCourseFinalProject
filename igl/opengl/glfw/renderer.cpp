@@ -132,8 +132,6 @@ IGL_INLINE void Renderer::init(igl::opengl::glfw::Viewer* viewer,int coresNum, i
 		{
 			// Draw parent menu content
 			menu->draw_viewer_menu(scn,core_list);
-
-
 		};
 	}
 }
@@ -162,14 +160,14 @@ void Renderer::MouseProcessing(int button)
 			
 			
 			//Assignment3
-			if (scn->selected_data_index != 0) {
-				scn->data_list[1].TranslateInSystem(scn->GetRotation(), Eigen::Vector3d(xToMove, 0, 0));
+			/*if (scn->selected_data_index != 0) {
+				scn->data_list[0].TranslateInSystem(scn->GetRotation(), Eigen::Vector3d(xToMove, 0, 0));
 				scn->data_list[1].TranslateInSystem(scn->GetRotation(), Eigen::Vector3d(0, yToMove, 0));
 			}
-			else {
+			else {*/
 				scn->data().TranslateInSystem(scn->GetRotation(), Eigen::Vector3d(xToMove, 0, 0));
 				scn->data().TranslateInSystem(scn->GetRotation(), Eigen::Vector3d(0, yToMove, 0));
-			}
+			//}
 			//scn->data().TranslateInSystem(scn->GetRotation(), Eigen::Vector3d(xToMove, 0, 0));
 			//scn->data().TranslateInSystem(scn->GetRotation(), Eigen::Vector3d(0, yToMove, 0));
 			scn->WhenTranslate();

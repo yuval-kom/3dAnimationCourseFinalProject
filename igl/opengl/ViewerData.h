@@ -16,6 +16,7 @@
 //#include <Eigen/Core>
 #include <memory>
 #include <vector>
+#include <igl/AABB.h>
 
 
 // Alec: This is a mesh class containing a variety of data types (normals,
@@ -226,6 +227,10 @@ public:
 
   // Unique identifier
   int id;
+
+  //Project
+  int gamePoints;
+  AABB<Eigen::MatrixXd, 3> tree;
 
   // OpenGL representation of the mesh
   igl::opengl::MeshGL meshgl;

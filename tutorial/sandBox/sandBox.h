@@ -1,5 +1,6 @@
 #pragma once
-#include "igl/opengl/glfw/Viewer.h"
+#include "igl/opengl/joint.h"
+//#include "igl/opengl/glfw/Viewer.h"
 #include "igl/aabb.h"
 #include <igl/circulation.h>
 #include <igl/collapse_edge.h>
@@ -19,9 +20,10 @@ public:
 	void Init(const std::string& config);
 	double doubleVariable;
 	void initDataStructure(Eigen::MatrixXd&, Eigen::MatrixXi&);
-	void simplification();
+	//void simplification();
 	//Assignment2
 	void translateData(Eigen::Vector3d dir);
+	void set_destination_pos(Eigen::Vector3d dir);
 
 	//Assignmet3
 	
@@ -32,21 +34,38 @@ public:
 	vector<Eigen::Vector3d> tmpPositions;
 	Eigen::Matrix3d CalcParentsRot(int indx);
 	Eigen::Vector3d getJoint(int indx);
-	void set_destination_pos();
+
+	
 	void set_tip_pos();
 	void IK_solver();
-	void printEulerAngles();
-	void setEulerAngles();
+	//void printEulerAngles();
+	//void setEulerAngles();
 	void setPositions();
 	void backward();
 	void forward();
 	void RotateJoints();
 	void fabrik();
 
+	//Project
+	const int snake = 0;
+	const int num_of_joints = 17;
+	const int num_of_links = 16;
+	std::vector<igl::opengl::Joint*> joints;
+	vector<Eigen::Vector3d> JointsPoses;
+
+	void add_joints();
+	void drawJoints();
+	double calc_related_distance(int i);
+	void add_weights();
+	Eigen::Matrix4d CalcParentsTransJoint(int indx);
+	void Skinning();
+	void moveJoints();
+	double sum(int i);
+	void normalizeToOne(int i);
 
 private:
 	// Prepare array-based edge data structures and priority queue
-	vector<Eigen::VectorXi*> EMAP;
+	/*vector<Eigen::VectorXi*> EMAP;
 	vector<Eigen::MatrixXi*> E, EF, EI;
 	typedef set<std::pair<double, int>> PriorityQueue;
 	vector<PriorityQueue*> Q;
@@ -55,23 +74,39 @@ private:
 	vector<int> num_collapsed;
 
 	vector<vector<Eigen::Matrix4d>> vertexsQ;
-	vector<int> currCollapseEdge;
+	vector<int> currCollapseEdge;*/
 
-	void calc_vertex_cost(const Eigen::MatrixXd& V, const Eigen::MatrixXi& F, const Eigen::MatrixXi& E);
-	void printInfo(const int e, double& cost,Eigen::RowVectorXd& p);
+	//Project
+	Eigen::MatrixXd W;
+	typedef std::vector<Eigen::Quaterniond, Eigen::aligned_allocator<Eigen::Quaterniond>>RotationList;
+	Eigen::RowVector3d sea_green = Eigen::RowVector3d((70.0 / 255), 252.0 / 255., 167 / 255.);
+	//maybe delete M and P (??)
+	Eigen::MatrixXd C, U, M;
+	Eigen::MatrixXi BE;
+	Eigen::VectorXi P;
+	std::vector<RotationList > poses; // rotations of joints for animation
+	double anim_t = 0.0;
+	double anim_t_dir = 0.015;
+	bool use_dqs = false;
+	bool recompute = true;
+	RotationList vQ; //rotation of joints
+	vector<Eigen::Vector3d> vT; //translation of joints
+
+	//void calc_vertex_cost(const Eigen::MatrixXd& V, const Eigen::MatrixXi& F, const Eigen::MatrixXi& E);
+	//void printInfo(const int e, double& cost,Eigen::RowVectorXd& p);
 
 	//Assignmet 2
-	double pos = -1;
+	/*double pos = -1;
 	vector<igl::AABB<Eigen::MatrixXd, 3>*> trees;
-	vector<igl::AABB<Eigen::MatrixXd, 3>*> subTrees;
+	vector<igl::AABB<Eigen::MatrixXd, 3>*> subTrees;*/
 	
-	vector<Eigen::Vector3d> velocities;
-	void drawBox(Eigen::AlignedBox<double, 3>* box, size_t index);
+	//vector<Eigen::Vector3d> velocities;
+	
 	bool checkConditions(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
 	bool collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
 
 	//Assignment 3
-	void setInitialPosition();
+	//void setInitialPosition();
 	void drawAxis(size_t i);
 	bool isTooFar();
 	

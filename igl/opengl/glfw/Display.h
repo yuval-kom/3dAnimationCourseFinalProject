@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <GLFW/glfw3.h>
+#include <vector>
 //#include "igl/opengl/glfw/renderer.h"
 #define EXIT_FAILURE 1
 struct GLFWwindow;
@@ -20,6 +21,8 @@ public:
 	void AddKeyCallBack(void(*func)(GLFWwindow*, int, int, int, int));
 	void AddMouseCallBacks(void (*mousebuttonfun)(GLFWwindow*, int, int, int), void(*scrollfun)(GLFWwindow*, double, double), void (*cursorposfun)(GLFWwindow*, double, double));
 	void AddResizeCallBack(void (*windowsizefun)(GLFWwindow*, int, int));
+	unsigned int loadCubemap(std::vector<std::string> faces);
+	unsigned int loadTexture(char const* path);
 
 	
 	~Display();

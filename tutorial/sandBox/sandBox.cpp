@@ -1,14 +1,20 @@
 #include "tutorial/sandBox/sandBox.h"
 #include "igl/edge_flaps.h"
 #include "igl/collapse_edge.h"
+#include <igl/directed_edge_orientations.h>
+#include <igl/forward_kinematics.h>
+#include <igl/dqs.h>
 #include "Eigen/dense"
 #include <functional>
 #include <iostream>
 #include <set>
+#include "igl/png/readPNG.h"
+#include <igl/jet.h>
 
 using namespace Eigen;
 using namespace igl;
 using namespace std;
+using namespace opengl;
 
 SandBox::SandBox()
 {
@@ -54,14 +60,18 @@ void SandBox::Init(const std::string& config)
         nameFileout.close();
     }
 
+    data_list[0].MyScale(Vector3d(1, 1, 5));
+    add_joints();
+    drawJoints();
+    initDataStructure(data_list[0].V, data_list[0].F);
     MyTranslate(Eigen::Vector3d(0, 0, -14), true);
+    //setVelocity(Eigen::Vector3d(-0.009, 0, 0));
+    drawAxis(0);
     //MyTranslate(Eigen::Vector3d(0, 0, -1), true);
-    data().set_colors(Eigen::RowVector3d(0.9, 0.1, 0.1));
+    //data().set_colors(Eigen::RowVector3d(0.9, 0.1, 0.1));
 
-    //Assignment3
-    setInitialPosition();
+    //set_destination_pos(Vecto);
     
-
 }
 
 SandBox::~SandBox()
@@ -70,55 +80,152 @@ SandBox::~SandBox()
 
 }
 
-void SandBox::setInitialPosition() {
-
-    data_list[0].MyTranslate(Vector3d(5, 0, 0), true);
-    for (size_t i = 1; i <= links_number; i++) {
-        data_list[i].MyTranslate(Vector3d(0, 0, link_Len), false);
-        data_list[i].SetCenterOfRotation(Eigen::Vector3d(0, 0, -0.8));
-        data_list[i].add_points(Eigen::RowVector3d(0, 0, -0.8), Eigen::RowVector3d(0, 0, 1));
-        drawAxis(i);
-        if(i > 1)
-            parents[i] = i - 1;
+void SandBox::add_joints() {
+    JointsPoses.resize(17);
+    joints.resize(17);
+    P.resize(17);
+    C.resize(17, 3);
+    Vector3d currPos = Vector3d(0, 0, -0.8);
+    for (int i = 0; i < num_of_joints; i++) {
+        Joint* curr_joint = new Joint(currPos, i);
+        C.row(i) = currPos;
+        //cout << "i: " << i << " pos: " << currPos << endl;
+        JointsPoses[i] = currPos;
+        joints[i] = curr_joint;
+        P[i] = i - 1;
+        currPos = currPos + Vector3d(0, 0, 0.1);
     }
-    
-    
+}
+void SandBox::drawJoints() {
+
+    Eigen::MatrixXd V_box(17, 3);
+    for (int i = 0; i < 17; i++) {
+        V_box.row(i) << C.row(i).x(), C.row(i).y(), C.row(i).z();
+    }
+
+    // Edges between joints
+    BE.resize(16, 2);
+    //Eigen::MatrixXi E_box(15, 2);
+    BE <<
+        0, 1,
+        1, 2,
+        2, 3,
+        3, 4,
+        4, 5,
+        5, 6,
+        6, 7,
+        7, 8,
+        8, 9,
+        9, 10,
+        10, 11,
+        11, 12,
+        12, 13,
+        13, 14,
+        14, 15,
+        15, 16;
+
+    data_list[0].set_points(V_box, Eigen::RowVector3d(0, 0, 1));
+
+    data_list[0].set_edges(V_box, BE, Eigen::RowVector3d(1, 0, 1));
 }
 
-void SandBox::drawAxis(size_t i){
+void SandBox::drawAxis(size_t i) {
     data_list[i].add_edges(Eigen::RowVector3d(-1.6, 0, 0.8), Eigen::RowVector3d(1.6, 0, 0.8), Eigen::RowVector3d(1, 0, 0)); // x axis - red
     data_list[i].add_edges(Eigen::RowVector3d(0, -1.6, 0.8), Eigen::RowVector3d(0, 1.6, 0.8), Eigen::RowVector3d(0, 1, 0)); // y axis - green
-    data_list[i].add_edges(Eigen::RowVector3d(0, 0,-0.8), Eigen::RowVector3d(0, 0, 2.4), Eigen::RowVector3d(0, 0, 1)); // z axis - blue
+    data_list[i].add_edges(Eigen::RowVector3d(0, 0, -0.8), Eigen::RowVector3d(0, 0, 1.6), Eigen::RowVector3d(0, 0, 1)); // z axis - blue
 }
 
-void SandBox::set_destination_pos() {
+double SandBox::calc_related_distance(int i) {
+    double sum = 0;
+    double distance;
+    for (int j = 0; j < joints.size(); j++) {
+        distance = abs(joints[j]->position.z() - data_list[0].V.row(i).z());
+        if (distance <= 0.1) {
+            sum += pow((1 / distance), 4);
+        }
+    }
+    return sum;
+}
+
+void SandBox::normalizeToOne(int i) {
+    int sumOfRow = sum(i);
+    if (sumOfRow == 0) return;
+    for (int j = 0; j < W.row(i).size(); j++) {
+        W(i, j) = W(i, j)/sumOfRow;
+    }
+}
+double SandBox::sum(int i) {
+    double sum = 0;
+    for (int j = 0; j < W.row(i).size(); j++) {
+        sum += W(i,j);
+    }
+    return sum;
+}
+void SandBox::add_weights() {
+    double distance;
+    for (int i = 0; i < data_list[0].V.rows(); i++) {
+        double related_distance = calc_related_distance(i);
+        for (int j = 0; j < joints.size() -1 ; j++) {
+            distance = abs(joints[j + 1]->position.z() - data_list[0].V.row(i).z());
+            //Vector3d vPos;
+            //vPos << data_list[0].V.row(i).x(), data_list[0].V.row(i).y(), data_list[0].V.row(i).z();
+            //distance = (joints[j]->position - 
+            /*if (distance <= 0.1) {
+                W(i, j) = 1;
+            }
+            else
+            {
+                W(i, j) = 0;
+
+            }*/
+            double temp = pow((1 / distance), 4);
+            W(i, j) = temp / related_distance;
+        }
+        normalizeToOne(i);
+    }
+
+}
+
+
+void SandBox::set_destination_pos(Eigen::Vector3d dir) {
     
-    destination_position = (data_list[0].MakeTransd() * Vector4d(0,0, 0, 1)).head(3);
+    destination_position = tip_position + dir;
 
 }
 
 void SandBox::set_tip_pos() {  
-    tip_position = (CalcParentsTrans(links_number) * data_list[links_number].MakeTransd() * Vector4d(0, 0, (link_Len / 2),1)).head(3);
+    tip_position = (CalcParentsTransJoint(num_of_links) * joints[num_of_joints - 1]->MakeTransd() * Vector4d(0, 0, 0.05, 1)).head(3);
 }
 
 Vector3d SandBox::getJoint(int indx) {
-    Vector3d joint =  data_list[1].GetRotation() * Vector3d(0, 0, -link_Len / 2);
-    for (size_t i = 1; i <= indx; i++) {
+    Vector3d joint = joints[0]->GetRotation() * Vector3d(0, 0, -0.8);
+    for (int i = 1; i <= indx; i++) {
         Matrix3d R = CalcParentsRot(i);
-        joint = joint + R * Vector3d(0, 0, link_Len);
+        joint = joint + R * Vector3d(0, 0, 0.1);
     }
 
     return joint;
 }
 
+Eigen::Matrix4d SandBox::CalcParentsTransJoint(int indx)
+{
+    Eigen::Matrix4d prevTrans = Eigen::Matrix4d::Identity();
+
+    for (int i = indx; i > 0; i = P[i])
+    {
+        prevTrans = prevTrans * joints[P[i]]->MakeTransd();
+    }
+
+    return prevTrans;
+}
 
 Eigen::Matrix3d SandBox::CalcParentsRot(int indx)
 {
     Eigen::Matrix3d prevRot = Eigen::Matrix3d::Identity();
 
-    for (int i = indx; parents[i] >= 0; i = parents[i])
+    for (int i = indx; i >= 0; i = P[i])
     {
-        prevRot = data_list[i].GetRotation() * prevRot;
+        prevRot = prevRot * joints[i]->GetRotation();
     }
 
     return prevRot;
@@ -131,12 +238,128 @@ bool SandBox::isTooFar() {
         return true;
     return false;
 }
+void SandBox::Skinning()
+{
+    if (recompute)
+    {
+        //find pose interval
+        const int begin = (int)floor(anim_t) % poses.size();
+        const int end = (int)(floor(anim_t) + 1) % poses.size();
+        const double t = anim_t - floor(anim_t);
+
+        // Interpolate pose and identity
+        RotationList anim_pose(poses[begin].size());
+        for (int e = 0; e < poses[begin].size(); e++)
+        {
+            anim_pose[e] = poses[begin][e].slerp(t, poses[end][e]);
+        }
+
+        //forwardLoop();
+        //computeRotationTranslationJoints();
+        igl::forward_kinematics(C, BE, P.head(16), anim_pose, vQ, vT);
+
+        const int dim = C.cols();
+        MatrixXd T(BE.rows() * (dim + 1), dim);
+        for (int e = 0; e < BE.rows(); e++)
+        {
+            Affine3d a = Affine3d::Identity();
+            a.translate(vT[e]);
+            a.rotate(vQ[e]);
+            T.block(e * (dim + 1), 0, dim + 1, dim) = a.matrix().transpose().block(0, 0, dim + 1, dim);
+        }
+
+        igl::dqs(data_list[0].V, W, vQ, vT, U);
+        /*for (int i = 0; i < U.rows(); i++) {
+            cout << " " << U.row(i) << end;
+        }*/
+
+        MatrixXd CT;
+        MatrixXi BET;
+        CT.resize(2*BE.rows() + 1, C.cols());
+        BET.resize(BE.rows(), 2);
+        for (int e = 0; e < BE.rows(); e++)
+        {
+            BET(e, 0) = 2*e;
+            BET(e, 1) = 2*e + 1;
+            Matrix4d t;
+            t << T.block(e * 4, 0, 4, 3).transpose(), 0, 0, 0, 0;
+            Affine3d a;
+            a.matrix() = t;
+            Vector3d c0 = C.row(BE(e, 0));
+            Vector3d c1 = C.row(BE(e, 1));
+            CT.row(2*e) = a * c0;
+            CT.row(2*e + 1) = a * c1;
+        }
+
+        data_list[0].set_vertices(U);
+        data_list[0].set_edges(CT, BET, sea_green);
+        data_list[0].compute_normals();
+        data_list[0].set_points(CT, RowVector3d(0, 0, 1));
+        //isActive = false;
+        //drawJoints();
+
+        //if (isActive)
+        //{
+            anim_t += anim_t_dir;
+        //}
+        //else
+        //{
+          //  recompute = false;
+        //}*/
+    }
+}
+
+void SandBox::moveJoints()
+{
+    //bool isNotReach = true;
+    //while (isNotReach) {
+        //Vector3d destination = tip_position + Vector3d(4, 0, 0);
+        for (int i = num_of_joints - 1; i > -1; i = P[i]) {
+            Vector3d currJoint = getJoint(i);
+            //cout << " currJoint" << i << ": " << currJoint << endl;
+            Vector3d vec1 = (destination_position - currJoint);
+            Vector3d vec2 = (tip_position - currJoint);
+            Eigen::Quaterniond quat = Eigen::Quaterniond::FromTwoVectors(vec1, vec2);
+            //Eigen::Matrix4d mat = CalcParentsTransJoint(i);
+            Eigen::Matrix3d mat = Eigen::Matrix3d::Identity();
+            for (int j = i; j > -1; j--) {
+                mat = mat * joints[i]->GetRotation();
+            }
+            quat = quat.slerp(0.95, Eigen::Quaterniond::Identity());
+            //vQ[i] = quat;
+            joints[i]->RotateInSystem(mat.block<3, 3>(0, 0), quat);
+            C.row(i) = getJoint(i);
+            //cout << i << " pos: " << C.row(i) << endl;
+            set_tip_pos();
+            drawJoints();
+            /*double distance = (tip_position - destination_position).norm();
+            if (distance <= 0.1) {
+                isNotReach = false;
+            }*/
+        }
+    //}
+    
+}
 
 void SandBox::IK_solver(){
 
-    set_destination_pos();
+    
     set_tip_pos();
-    if (isTooFar())
+    //Vector3d destination = JointsPoses[0] + Vector3d(4, 0, 0);
+    for (int i = links_number; i > 0; i = parents[i]) {
+        Vector3d currJoint = getJoint(i);
+        //cout << " currJoint" << i << ": " << currJoint << endl;
+        Vector3d vec1 = (destination_position - currJoint);
+        Vector3d vec2 = (tip_position - currJoint);
+        Eigen::Quaterniond quat = Eigen::Quaterniond::FromTwoVectors(vec1, vec2);
+        Eigen::Matrix4d mat = CalcParentsTrans(i);
+        quat = quat.slerp(0.95, Eigen::Quaterniond::Identity());
+        //vQ[i] = quat;
+        data_list[i].RotateInSystem(mat.block<3, 3>(0, 0), quat);
+        set_tip_pos();
+        
+    }
+    /*if (isTooFar())
     {
         cout << "cannot reach" << endl;
         return;
@@ -170,57 +393,7 @@ void SandBox::IK_solver(){
 
         data_list[i].RotateInSystem(vecToRotate, angle);
         set_tip_pos();
-    }
-
-}
-void SandBox::setEulerAngles() {
-
-    for (size_t i = 1; i <= links_number; i++) {
-        double phi = data_list[i].GetRotation().eulerAngles(2, 0, 2)[0];
-        double theta = data_list[i].GetRotation().eulerAngles(2, 0, 2)[1];
-        double  psi = data_list[i].GetRotation().eulerAngles(2, 0, 2)[2];
-
-        Matrix3d A1;
-        Matrix3d A2;
-        Matrix3d A3;
-        A1 << cos(phi), -sin(phi), 0,
-            sin(phi), cos(phi), 0,
-            0, 0, 1;
-
-        A2 << 1, 0, 0,
-            0, cos(theta), -sin(theta),
-            0, sin(theta), cos(theta);
-
-        A3 << cos(psi), -sin(psi), 0,
-            sin(psi), cos(psi), 0,
-            0, 0, 1;
-
-
-        data_list[i].MyRotate(data_list[i].GetRotation().transpose());
-        data_list[i].SetRotation(A1*A2 *A3);
-        
-    }
-  
-}
-
-void SandBox::printEulerAngles(){
-
-        double phi = data().GetRotation().eulerAngles(2, 0, 2)[0];
-        double theta = data().GetRotation().eulerAngles(2, 0, 2)[1];
-
-        Matrix3d A1;
-        Matrix3d A2;
-        A1 << cos(phi), -sin(phi), 0,
-            sin(phi), cos(phi), 0,
-            0, 0, 1;
-
-        A2 << 1, 0, 0,
-            0, cos(theta), -sin(theta),
-            0, sin(theta), cos(theta);
-
-        cout << " EulerAngles matrix: " << endl;
-        cout << "phi: " << A1 << endl;
-        cout << "theta: " << A2 << endl;
+    }*/
 
 }
 
@@ -292,7 +465,7 @@ void SandBox::fabrik() {
     {
         tmpPositions = positions;
         forward();
-        backward();
+       backward();
         RotateJoints();
     }
     else {
@@ -304,216 +477,32 @@ void SandBox::fabrik() {
 }
 
 
-void SandBox::calc_vertex_cost(const Eigen::MatrixXd& V,
-    const Eigen::MatrixXi& F,
-    const Eigen::MatrixXi& E)
-{
-    vector<Eigen::Matrix4d> vertexsQTmp;
-    vertexsQTmp.resize(V.rows(), Matrix4d::Zero());
 
-    for (int f = 0; f < F.rows(); f++)
-    {
-        RowVectorXd fNormal = data().F_normals.row(f).normalized();
-        for (int i = 0; i < 3; i++) {
-            Matrix4d Qtmp = vertexsQTmp.at(F(f, i));
-            RowVectorXd v = V.row(F(f, i));
-            Matrix4d Kp;
-            double d = -1.0 * fNormal.dot(v);
-            RowVector4d p;
-            p << fNormal, d;
-            Kp = p.transpose() * p;
-            Qtmp = Qtmp + Kp;
-            vertexsQTmp.at(F(f, i)) = Qtmp;
-        }
-    }
-    vertexsQ.push_back(vertexsQTmp);
-
-}
-
-void SandBox::drawBox(AlignedBox<double, 3>* box , size_t index) {
-
-    VectorXd c = box->center();
-    Eigen::MatrixXd V_box(8, 3);
-    V_box <<
-       c.x() - box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
-       c.x() - box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() + box->sizes()(2)/2,
-       c.x() - box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
-       c.x() + box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
-       c.x() - box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() + box->sizes()(2)/2,
-       c.x() + box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() - box->sizes()(2)/2,
-       c.x() + box->sizes()(0)/2, c.y() - box->sizes()(1)/2, c.z() + box->sizes()(2)/2,
-       c.x() + box->sizes()(0)/2, c.y() + box->sizes()(1)/2, c.z() + box->sizes()(2)/2;
-
-    // Edges of the bounding box
-    Eigen::MatrixXi E_box(12, 2);
-    E_box <<
-        0, 1,
-        0, 2,
-        1, 4,
-        3, 0,
-        1, 6,
-        2, 4,
-        2, 5,
-        6, 3,
-        5, 3,
-        7, 5,
-        7, 6,
-        7, 4;
-
-    data_list[index].add_points(V_box, Eigen::RowVector3d(1, 0, 0));
-
-    for (unsigned i = 0; i < E_box.rows(); ++i)
-        data_list[index].add_edges
-        (
-            V_box.row(E_box(i, 0)),
-            V_box.row(E_box(i, 1)),
-            Eigen::RowVector3d(1, 0, 0)
-        );
-}
 
 
 
 void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
 {
-    const auto& calc_edge_cost = [&](const int e,
-        const Eigen::MatrixXd& V,
-        const Eigen::MatrixXi&,
-        const Eigen::MatrixXi& E,
-        const Eigen::VectorXi&,
-        const Eigen::MatrixXi&,
-        const Eigen::MatrixXi&,
-        double& cost, Eigen::RowVectorXd& p)->void
-    {
-        Matrix4d newQ = vertexsQ[selected_data_index].at(E(e, 0)) + vertexsQ[selected_data_index].at(E(e, 1));
-        Matrix4d newQDerivative = newQ;
-        Vector4d vecToMul;
-       
-        vecToMul << 0, 0, 0, 1;
-        newQDerivative.row(3) = vecToMul;
+   
+    W.resize(data_list[0].V.rows(), joints.size() - 1);
+    add_weights();
+    /*Eigen::MatrixXd S;
+    igl::jet(W, true, S);
+    data_list[0].set_colors(S);*/
+    data_list[0].tree.init(data_list[0].V, data_list[0].F);
+    drawBox(&data_list[0].tree.m_box, 0);
 
-        VectorXd newV = newQDerivative.inverse() * vecToMul;
-        cost = newV.transpose() * newQ * newV;
-        newV.conservativeResize(3);
-        p = newV;  
-    };
+    RotationList rest_pose;
+    igl::directed_edge_orientations(C, BE, rest_pose);
 
-    MatrixXi* Etmp = new MatrixXi(), * EFtmp = new MatrixXi(), * EItmp = new MatrixXi();
-    VectorXi* EMAPtmp = new VectorXi();
-    SandBox::PriorityQueue* Qtmp = new SandBox::PriorityQueue;
-    vector<SandBox::PriorityQueue::iterator> QitTmp;
-    
-
-    edge_flaps(F, *Etmp, *EMAPtmp, *EFtmp, *EItmp);
-
-    QitTmp.resize(Etmp->rows());
-    C.push_back(new MatrixXd(Etmp->rows(), V.cols()));
-    VectorXd costs(Etmp->rows());
-    Qtmp->clear();
-
-    calc_vertex_cost(V, F, *Etmp);
-    
-    for (int e = 0; e < Etmp->rows(); e++) {
-        double cost = e;
-        RowVectorXd p(1, 3);
-        calc_edge_cost(e, V, F, *Etmp, *EMAPtmp, *EFtmp, *EItmp, cost, p);
-        C[selected_data_index]->row(e) = p;
-        QitTmp[e] = Qtmp->insert(pair<double, int>(cost, e)).first;
+    poses.resize(4, RotationList(16, Eigen::Quaterniond::Identity()));
+    const Quaterniond twist(AngleAxisd(M_PI, Vector3d(1, 0, 0)));
+    const Quaterniond bend(AngleAxisd(M_PI * 0.7, Vector3d(0, 0, 1)));
+    for (int i = 1; i < num_of_links; i++) {
+        poses[1][i] = rest_pose[2] * twist * rest_pose[2].conjugate();
+        poses[3][i] = rest_pose[2] * bend * rest_pose[2].conjugate();
     }
-
-    EMAP.push_back(EMAPtmp);
-    E.push_back(Etmp);
-    EF.push_back(EFtmp);
-    EI.push_back(EItmp);
-    Q.push_back(Qtmp);
-    Qit.push_back(QitTmp);
-    num_collapsed.push_back(0);
-
-    currCollapseEdge.push_back(-1);
-
-    //Assingment 2
-    AABB<MatrixXd, 3>* treeTmp = new AABB<MatrixXd, 3>;
-    treeTmp->init(data().V, data().F);
-    trees.push_back(treeTmp);
-    subTrees.push_back(treeTmp);
-    velocities.push_back(Eigen::Vector3d(-0.009, 0, 0));
     
-}
-
-
-void SandBox::printInfo(const int e, double& cost,
-    Eigen::RowVectorXd& p) {
-    cout << "edge " << e << ", cost = " << cost << " new v position (" << p[0] << "," << p[1] << "," << p[2] << ")" << endl;
-
-}
-
-void SandBox::simplification()
-{
-    const auto& calc_edge_cost = [&](const int e,
-        const Eigen::MatrixXd& V,
-        const Eigen::MatrixXi&,
-        const Eigen::MatrixXi& E,
-        const Eigen::VectorXi&,
-        const Eigen::MatrixXi&,
-        const Eigen::MatrixXi&,
-        double& cost, Eigen::RowVectorXd& p)->void
-    {
-        
-        Matrix4d newQ = vertexsQ[selected_data_index].at(E(e, 0)) + vertexsQ[selected_data_index].at(E(e, 1));
-
-        Matrix4d newQDerivative = newQ;
-        Vector4d vecToMul;
-
-        newQDerivative.row(3) << 0, 0, 0, 1;
-        vecToMul << 0, 0, 0, 1;
-
-        VectorXd newV = newQDerivative.inverse() * vecToMul;
-        cost = newV.transpose() * newQ * newV;
-        newV.conservativeResize(3);
-        p = newV;
-
-        if (currCollapseEdge[selected_data_index] >= 0) {
-            vertexsQ[selected_data_index].at(E(e, 0)) = newQ;
-            currCollapseEdge[selected_data_index] = -1;
-            printInfo(e, cost, p);
-        }
-    };
-
-    if (!Q[selected_data_index]->empty())
-    {
-
-        bool something_collapsed = false;
-        int numToCollapse = std::ceil(0.05 * Q[selected_data_index]->size());
-
-        for (int j = 0; j < numToCollapse; j++)
-        {
-            std::pair<double, int> minEdge = *Q[selected_data_index]->begin();
-            if (minEdge.first != std::numeric_limits<double>::infinity())
-            {
-                currCollapseEdge[selected_data_index] = minEdge.second;
-       
-            }
-            else
-            {
-                currCollapseEdge[selected_data_index] = -1;
-            }
-            if (!collapse_edge(calc_edge_cost, data().V, data().F,
-                *E[selected_data_index], *EMAP[selected_data_index], *EF[selected_data_index], *EI[selected_data_index], *Q[selected_data_index], Qit[selected_data_index], *C[selected_data_index])) {
-
-                break;
-            }
-            
-            something_collapsed = true;
-            num_collapsed.at(selected_data_index)++;
-        }
-
-        if (something_collapsed)
-        {
-            data().set_mesh(data().V, data().F);
-            data().set_face_based(true);
-            data().dirty = 157;
-
-        }
-    }
 }
 
 
@@ -667,8 +656,8 @@ bool SandBox::collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eig
     
     if (isCollided) {
         if (Atree->is_leaf() && Btree->is_leaf()) {
-            subTrees[selected_data_index] = Atree;
-            subTrees[i] = Btree;
+            //subTrees[selected_data_index] = Atree;
+            //subTrees[i] = Btree;
             return true;
         }
         else if (Atree->is_leaf()) {
@@ -686,32 +675,24 @@ bool SandBox::collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eig
 }
 
 void SandBox::translateData(Eigen::Vector3d dir) {
-    velocities[selected_data_index] = dir;
+    //velocities[selected_data_index] = dir;
 }
 
 void SandBox::Animate()
 {
-    //Assignment2
-    //
     
     if (isActive)
     {
-        //IK_solver();
-        //set_tip_pos();
-        //setPositions();
-        fabrik();
-            //Assignment2
-            /*for (size_t i = 0; i < data_list.size(); i++) {
-                if (i != selected_data_index){
-                    if (collisionDetec(trees[selected_data_index], trees[i], i)) {
-                        drawBox(&subTrees[selected_data_index]->m_box, selected_data_index);
-                        drawBox(&subTrees[i]->m_box, i);
-                    }
-                    else
-                    {
-                      data().MyTranslate(velocities[selected_data_index], true);
-                    }
-                }
-            }*/
+        for (size_t i = 1; i < data_list.size(); i++) {
+            //if (isTooFar(tip_position)){
+            if (collisionDetec(&data_list[0].tree, &data_list[i].tree, i)) {
+                cout << "collision!!" << endl;
+                erase_mesh(i);
+                if (data_list.size() ==  1) isActive = false;
+                //drawBox(&subTrees[selected_data_index]->m_box, selected_data_index);
+                    //drawBox(&subTrees[i]->m_box, i);
+            }
+            //}
+        }
     }
 }

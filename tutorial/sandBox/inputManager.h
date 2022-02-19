@@ -2,7 +2,6 @@
 #include "igl/opengl/glfw/Display.h"
 #include "igl/opengl/glfw/Renderer.h"
 #include "sandBox.h"
-#include "IK.h"
 //#include <igl/opengl/glfw/imgui/ImGuiMenu.h>
 //#include <igl/opengl/glfw/imgui/ImGuiHelpers.h>
 //#include <../imgui/imgui.h>
@@ -36,7 +35,7 @@ static void glfw_mouse_press(GLFWwindow* window, int button, int action, int mod
 		  }
 	  }
 	  scn->selected_data_index = savedIndx;
-	  scn->data().set_colors(Eigen::RowVector3d(0.9, 0.1, 0.1));
+	  //scn->data().set_colors(Eigen::RowVector3d(0.9, 0.1, 0.1));
 	  if (lastIndx != savedIndx)
 		  scn->data_list[lastIndx].set_colors(Eigen::RowVector3d(255.0 / 255.0, 228.0 / 255.0, 58.0 / 255.0));
 
@@ -142,16 +141,6 @@ static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int act
 			rndr->core().orthographic = !rndr->core().orthographic;
 			break;
 		}
-		case 'P':
-		case 'p':
-		{
-			//Assigmnet3
-			if (rndr->IsPicked())
-			scn->printEulerAngles();
-			else
-				std::cout << "scn rotation:" <<endl << scn->GetRotation();
-			break;
-		}
 		case 'T':
 		case 't':
 		{
@@ -187,45 +176,48 @@ static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int act
 			rndr->TranslateCamera(Eigen::Vector3f(0, 0, -0.03f));
 			break;
 		case GLFW_KEY_UP:
-			if (rndr->IsPicked())
+			scn->set_destination_pos(Eigen::Vector3d(0, 0.2, 0));
+			scn->moveJoints();
+			/*if (rndr->IsPicked())
 				scn->data().MyRotate(Eigen::Vector3d(1, 0, 0), 0.05);
-			else
+			else*/
 				//rndr->TranslateCamera(Eigen::Vector3f(0, 0.01f,0));
 			//scn->translateData(Eigen::Vector3d(0, 0.01, 0)); //Assignment2
 			break;
 		case GLFW_KEY_DOWN:
-			if (rndr->IsPicked())
+			scn->set_destination_pos(Eigen::Vector3d(0, -0.2, 0));
+			scn->moveJoints();
+			/*if (rndr->IsPicked())
 				scn->data().MyRotate(Eigen::Vector3d(1, 0, 0), -0.05);
 			else
-				rndr->TranslateCamera(Eigen::Vector3f(0, -0.01f,0));
+				rndr->TranslateCamera(Eigen::Vector3f(0, -0.01f,0));*/
 			//scn->translateData(Eigen::Vector3d(0, -0.01, 0)); //Assignment2
 
 			break;
 		case GLFW_KEY_LEFT:
-			if(rndr->IsPicked())
+			scn->set_destination_pos(Eigen::Vector3d(-0.2, 0, 0));
+			scn->moveJoints();
+			/*if(rndr->IsPicked())
 				scn->data().RotateInSystem(Eigen::Vector3d(0, 0, 1), -0.05);
 			else
-				rndr->TranslateCamera(Eigen::Vector3f(-0.01f, 0,0));
+				rndr->TranslateCamera(Eigen::Vector3f(-0.01f, 0,0));*/
 			//scn->translateData(Eigen::Vector3d(-0.01, 0, 0)); //Assignment2
 			break;
 		case GLFW_KEY_RIGHT:
-			if (rndr->IsPicked())
-				scn->data().RotateInSystem(Eigen::Vector3d(0, 0, 1), 0.05);
+			scn->set_destination_pos(Eigen::Vector3d(0.2,0,0));
+			scn->moveJoints();
+			//scn->Skinning();
+			/*if (rndr->IsPicked())
+				scn->data().RotateInSystem(Eigen::Vector3d(0, 0, 1), 0.05);	
 			else
-				rndr->TranslateCamera(Eigen::Vector3f(0.01f, 0, 0));
+				rndr->TranslateCamera(Eigen::Vector3f(0.01f, 0, 0));*/
 			//scn->translateData(Eigen::Vector3d(0.01, 0, 0)); //Assignment2
 			break;
 		case ' ':
-			scn->positions.resize(scn->links_number + 1);
-			scn->setPositions();
 			if (scn->isActive == true) {
 				scn->isActive = false;
 			}
 			else { scn->isActive = true; }
-			
-			//scn->fabrik();
-			//scn->IK_solver();
-			//scn->simplification();
 			break;
 		
 		default: 

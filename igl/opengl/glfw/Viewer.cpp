@@ -364,7 +364,20 @@ namespace glfw
 
   void Viewer::AddNewShape(int savedIndx) {
 
+      data().show_overlay_depth = true;
+      data_list.back().show_faces = 3;
+      data().show_texture = true;
+      data().point_size = 10;
+      data().line_width = 2;
+      data().show_overlay = 1;
+      data().show_lines = 1;
+      data().show_overlay_depth = 2;
+      data().set_visible(false, 1);
+      data().set_visible(true, 2);
       parents.push_back(-1);
+      
+
+      /*parents.push_back(-1);
       data_list.back().set_visible(false, 1);
       data_list.back().set_visible(true, 2);
       data_list.back().show_faces = 3;
@@ -373,12 +386,69 @@ namespace glfw
       data().line_width = 2;
       data_list.back().show_overlay = 1;
       data_list.back().show_lines = 1;
-      selected_data_index = savedIndx;
-      links_number++;
-      parents[links_number] = links_number - 1;
-      data_list[links_number].MyTranslate(Eigen::Vector3d(0, 0, link_Len), false);
-      data_list[links_number].SetCenterOfRotation(Eigen::Vector3d(0, 0, -0.8));
-      tip_position = Eigen::Vector3d(0, 0, links_number * 1.6);  
+      selected_data_index = savedIndx;*/
+      
+  }
+  void Viewer::start_first_level() {
+
+      /*for (int i = 1; i < data_list.size(); i++) {
+          data_list[i].set_visible(true, 2);
+          data_list[i].MyTranslate(Eigen::Vector3d(5, 0, 0), false);
+          data_list[i].tree.init(data_list[i].V, data_list[i].F);
+          drawBox(&data_list[i].tree.m_box, i);
+      }*/
+      for (int i = 1; i < 3; i++) {
+          load_mesh_from_file("C:/FinalProjectAnimation/tutorial/data/sphere.obj");
+          int currIndex = data_list.size() - 1;
+          AddNewShape(currIndex);
+          data_list[i].MyTranslate(Eigen::Vector3d(5 + i, 0, 0), false);
+          //data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() % 10 - double(i) * 2, 0, rand() % 10 + double(i) * 2), false);
+          data_list[currIndex].gamePoints = 5;
+          data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
+          //drawBox(&data_list[currIndex].tree.m_box, currIndex); 
+      }
+
+  }
+
+  void Viewer::drawBox(Eigen::AlignedBox<double, 3>* box, int index) {
+
+      Eigen::VectorXd c = box->center();
+      Eigen::MatrixXd V_box(8, 3);
+      V_box <<
+          c.x() - box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
+          c.x() - box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2,
+          c.x() - box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
+          c.x() + box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
+          c.x() - box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2,
+          c.x() + box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
+          c.x() + box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2,
+          c.x() + box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2;
+
+      // Edges of the bounding box
+      Eigen::MatrixXi E_box(12, 2);
+      E_box <<
+          0, 1,
+          0, 2,
+          1, 4,
+          3, 0,
+          1, 6,
+          2, 4,
+          2, 5,
+          6, 3,
+          5, 3,
+          7, 5,
+          7, 6,
+          7, 4;
+
+      data_list[index].add_points(V_box, Eigen::RowVector3d(1, 0, 0));
+
+      for (unsigned i = 0; i < E_box.rows(); ++i)
+          data_list[index].add_edges
+          (
+              V_box.row(E_box(i, 0)),
+              V_box.row(E_box(i, 1)),
+              Eigen::RowVector3d(1, 0, 0)
+          );
   }
 
 } // end namespace

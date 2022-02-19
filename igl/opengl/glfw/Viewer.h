@@ -126,6 +126,10 @@ namespace glfw
 
     //For Assignmet3
     void AddNewShape(int savedIndx);
+
+    //Project
+    void start_first_level();
+    void drawBox(Eigen::AlignedBox<double, 3>* box, int index);
 public:
     //////////////////////
     // Member variables //
@@ -152,6 +156,9 @@ public:
 
     // Keep track of the global position of the scrollwheel
     float scroll_position;
+
+    //Project
+    int score = 0;
 
   public:
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW

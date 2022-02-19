@@ -48,11 +48,22 @@ void Movable::MyRotate(Eigen::Vector3d rotAxis, double angle)
 	Tout.rotate(Eigen::AngleAxisd(angle, rotAxis.normalized()));
 }
 
+void Movable::MyRotate(const Eigen::Quaterniond rot)
+{
+	Tout.rotate(rot);
+}
+
 void Movable::RotateInSystem(Eigen::Vector3d rotAxis, double angle)
 { 
 	Tout.rotate(Eigen::AngleAxisd(angle, Tout.rotation().transpose() * (rotAxis.normalized())));
-
 }
+
+void Movable::RotateInSystem(const Eigen::Matrix3d& mat, const Eigen::Quaterniond rot)
+{
+	Eigen::Quaterniond q = Eigen::Quaterniond(mat);
+	MyRotate((q * rot.conjugate()) * q.conjugate());
+}
+
 void Movable::MyRotate(const Eigen::Matrix3d& rot)
 {
 	Tout.rotate(rot);

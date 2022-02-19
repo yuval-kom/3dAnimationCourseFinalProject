@@ -17,6 +17,8 @@ public:
 	Eigen::Matrix3d GetRotation() { return Tout.rotation();}
 	void MyRotate(Eigen::Vector3d rotAxis, double angle);
 	void RotateInSystem(Eigen::Vector3d rotAxis, double angle);
+	void RotateInSystem(const Eigen::Matrix3d& mat, const Eigen::Quaterniond rot);
+	void MyRotate(const Eigen::Quaterniond rot);
 	void MyRotate(const Eigen::Matrix3d &rot);
 	void MyScale(Eigen::Vector3d amt);
 	void SetCenterOfRotation(Eigen::Vector3d center);
