@@ -42,6 +42,9 @@
 #include <igl/unproject.h>
 #include <igl/serialize.h>
 
+#include <Windows.h>
+#include <mmsystem.h>
+
 // Internal global variables used for glfw event handling
 //static igl::opengl::glfw::Viewer * __viewer;
 static double highdpi = 1;
@@ -55,6 +58,7 @@ namespace opengl
 namespace glfw
 {
 
+  using namespace Eigen;
   void Viewer::Init(const std::string config)
   {
 	  
@@ -69,6 +73,7 @@ namespace glfw
 	isActive(false)
   {
     data_list.front().id = 0;
+    level = 1;
 
   
 
@@ -362,6 +367,8 @@ namespace glfw
 	  return prevTrans;
   }
 
+ 
+
   void Viewer::AddNewShape(int savedIndx) {
 
       data().show_overlay_depth = true;
@@ -375,39 +382,59 @@ namespace glfw
       data().set_visible(false, 1);
       data().set_visible(true, 2);
       parents.push_back(-1);
+      selected_data_index = savedIndx;
       
-
-      /*parents.push_back(-1);
-      data_list.back().set_visible(false, 1);
-      data_list.back().set_visible(true, 2);
-      data_list.back().show_faces = 3;
-      data_list.back().show_overlay_depth = true;
-      data().point_size = 10;
-      data().line_width = 2;
-      data_list.back().show_overlay = 1;
-      data_list.back().show_lines = 1;
-      selected_data_index = savedIndx;*/
       
   }
-  void Viewer::start_first_level() {
 
-      /*for (int i = 1; i < data_list.size(); i++) {
-          data_list[i].set_visible(true, 2);
-          data_list[i].MyTranslate(Eigen::Vector3d(5, 0, 0), false);
-          data_list[i].tree.init(data_list[i].V, data_list[i].F);
-          drawBox(&data_list[i].tree.m_box, i);
-      }*/
+  void Viewer::start_level() {
+      int numToAdd;
+      switch (level)
+      {
+      case 1:
+          numToAdd = 3;
+          break;
+      case 2:
+          numToAdd = 4;
+          for (int i = 1; i < numToAdd - 2; i++) {
+              load_mesh_from_file("C:/FinalProjectAnimation/tutorial/data/cube.obj");
+              int currIndex = data_list.size() - 1;
+              AddNewShape(currIndex);
+              data_list[currIndex].isPrize = false;
+              data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() % 10 + double(i) * 2, 0, rand() % 10 - double(i) * 2), false);
+              data_list[currIndex].gamePoints = -1;
+              data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
+          }
+      }
+
       for (int i = 1; i < 3; i++) {
           load_mesh_from_file("C:/FinalProjectAnimation/tutorial/data/sphere.obj");
           int currIndex = data_list.size() - 1;
           AddNewShape(currIndex);
-          data_list[i].MyTranslate(Eigen::Vector3d(5 + i, 0, 0), false);
-          //data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() % 10 - double(i) * 2, 0, rand() % 10 + double(i) * 2), false);
+          data_list[currIndex].isPrize = true;
+          data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() %10 + double(i)*2, 0, rand() % 10 - double(i) * 2), false);
           data_list[currIndex].gamePoints = 5;
           data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
-          //drawBox(&data_list[currIndex].tree.m_box, currIndex); 
       }
+      time(&level_start_time);
+      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+      isDuringLevel = true;
+      isActive = true;
+  }
 
+  void Viewer::resetScene(bool isWon) {
+      for (int i = 1; i < data_list.size(); i++) {
+          erase_mesh(i);
+      }
+      if (isWon) {
+         std::cout << " Finish level";
+         PlaySound(TEXT("C:/AnimationCourseEngine/sounds/WinLevel.wav"), NULL, SND_FILENAME | SND_ASYNC);
+         level++;
+      }
+      else {
+          PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
+          std::cout << " YOU LOSE!";
+      }
   }
 
   void Viewer::drawBox(Eigen::AlignedBox<double, 3>* box, int index) {
@@ -450,6 +477,8 @@ namespace glfw
               Eigen::RowVector3d(1, 0, 0)
           );
   }
+
+  
 
 } // end namespace
 } // end namespace

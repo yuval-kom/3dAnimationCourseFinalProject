@@ -144,15 +144,20 @@ static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int act
 		case 'T':
 		case 't':
 		{
-			//rndr->core().toggle(scn->data().show_faces);
-			//Assigmnet3
-			std::cout << "tip position: " << scn->tip_position << std::endl;
+			//Snake point of wiew
+			//rndr->core(0).camera_center = Eigen::Vector3f(0, 1, 0);
+			//rndr->core(0).camera_eye = Eigen::Vector3f(0, 0, 0);
+			//rndr->RotateCamera(float(scn->joints[16]->GetRotation().eulerAngles(2,0,2)[0]), float(scn->joints[16]->GetRotation().eulerAngles(2, 0, 2)[1]));
+			rndr->RotateCameraX(45);
+			rndr->core(0).camera_translation = Eigen::Vector3f(scn->joints[0]->position.x(), scn->joints[0]->position.y(), scn->joints[0]->position.z());
 			break;
 		}
 		case 'D':
 		case 'd':
+
 		{	//Assigmnet3
 			std::cout << "destination position: " << scn->destination_position << std::endl;
+			break;
 		}
 
 		case '[':

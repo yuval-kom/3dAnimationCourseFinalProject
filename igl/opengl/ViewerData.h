@@ -231,6 +231,7 @@ public:
   //Project
   int gamePoints;
   AABB<Eigen::MatrixXd, 3> tree;
+  bool isPrize;
 
   // OpenGL representation of the mesh
   igl::opengl::MeshGL meshgl;

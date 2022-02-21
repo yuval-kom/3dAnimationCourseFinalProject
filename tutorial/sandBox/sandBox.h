@@ -1,6 +1,7 @@
 #pragma once
-#include "igl/opengl/joint.h"
+
 //#include "igl/opengl/glfw/Viewer.h"
+#include "igl/opengl/joint.h"
 #include "igl/aabb.h"
 #include <igl/circulation.h>
 #include <igl/collapse_edge.h>
@@ -10,6 +11,7 @@
 #include <igl/parallel_for.h>
 #include <igl/read_triangle_mesh.h>
 #include <igl/opengl/glfw/Viewer.h>
+#include <time.h>
 
 using namespace std;
 class SandBox : public igl::opengl::glfw::Viewer
@@ -23,41 +25,43 @@ public:
 	//void simplification();
 	//Assignment2
 	void translateData(Eigen::Vector3d dir);
-	void set_destination_pos(Eigen::Vector3d dir);
-
-	//Assignmet3
 	
-	Eigen::Vector3d destination_position = Eigen::Vector3d(5, 0, 0);
-	Eigen::Vector3d startPos;
-
+	
+	
+	/*Eigen::Vector3d startPos;
     vector<Eigen::Vector3d> positions;
-	vector<Eigen::Vector3d> tmpPositions;
-	Eigen::Matrix3d CalcParentsRot(int indx);
-	Eigen::Vector3d getJoint(int indx);
+	vector<Eigen::Vector3d> tmpPositions;*/
 
 	
-	void set_tip_pos();
-	void IK_solver();
-	//void printEulerAngles();
-	//void setEulerAngles();
-	void setPositions();
-	void backward();
-	void forward();
-	void RotateJoints();
-	void fabrik();
+	//void IK_solver();
+	////void printEulerAngles();
+	////void setEulerAngles();
+	//void setPositions();
+	//void backward();
+	//void forward();
+	//void RotateJoints();
+	//void fabrik();
 
 	//Project
-	const int snake = 0;
-	const int num_of_joints = 17;
-	const int num_of_links = 16;
+	
 	std::vector<igl::opengl::Joint*> joints;
+	Eigen::VectorXi P; //parents for joints
 	vector<Eigen::Vector3d> JointsPoses;
+	
+
+
+	Eigen::Matrix3d CalcParentsRot(int indx);
+	Eigen::Vector3d getJoint(int indx);
+	Eigen::Matrix4d CalcParentsTransJoint(int indx);
+
+	void set_tip_pos();
+	void set_destination_pos(Eigen::Vector3d dir);
 
 	void add_joints();
 	void drawJoints();
 	double calc_related_distance(int i);
 	void add_weights();
-	Eigen::Matrix4d CalcParentsTransJoint(int indx);
+	
 	void Skinning();
 	void moveJoints();
 	double sum(int i);
@@ -83,7 +87,7 @@ private:
 	//maybe delete M and P (??)
 	Eigen::MatrixXd C, U, M;
 	Eigen::MatrixXi BE;
-	Eigen::VectorXi P;
+	
 	std::vector<RotationList > poses; // rotations of joints for animation
 	double anim_t = 0.0;
 	double anim_t_dir = 0.015;
@@ -100,7 +104,7 @@ private:
 	vector<igl::AABB<Eigen::MatrixXd, 3>*> trees;
 	vector<igl::AABB<Eigen::MatrixXd, 3>*> subTrees;*/
 	
-	//vector<Eigen::Vector3d> velocities;
+	vector<Eigen::Vector3d> velocitiesByLevel;
 	
 	bool checkConditions(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
 	bool collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);

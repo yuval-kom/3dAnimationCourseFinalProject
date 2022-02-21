@@ -26,6 +26,7 @@
 #include <string>
 #include <cstdint>
 
+
 #define IGL_MOD_SHIFT           0x0001
 #define IGL_MOD_CONTROL         0x0002
 #define IGL_MOD_ALT             0x0004
@@ -128,8 +129,11 @@ namespace glfw
     void AddNewShape(int savedIndx);
 
     //Project
-    void start_first_level();
-    void drawBox(Eigen::AlignedBox<double, 3>* box, int index);
+    void start_level();
+    void resetScene(bool isWon);
+    void drawBox(Eigen::AlignedBox<double, 3>* box, int index); 
+
+    
 public:
     //////////////////////
     // Member variables //
@@ -147,9 +151,18 @@ public:
 	bool isPicked;
 	bool isActive;
 
-    int links_number = 3;
-    double link_Len = 1.6;
-    Eigen::Vector3d tip_position = Eigen::Vector3d(0, 0, (links_number) * 1.6);
+    const int snake = 0;
+    const int num_of_joints = 17;
+    const int num_of_links = 16;
+    int level;
+    time_t level_start_time;
+    int duration;
+    bool isDuringLevel;
+
+    //int links_number = 3;
+    //double link_Len = 1.6;
+    Eigen::Vector3d tip_position = Eigen::Vector3d(0, 0, 0.8);
+    Eigen::Vector3d destination_position = Eigen::Vector3d(5, 0, 0);
 
     // List of registered plugins
 //    std::vector<ViewerPlugin*> plugins;

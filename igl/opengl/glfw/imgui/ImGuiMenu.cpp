@@ -221,7 +221,7 @@ IGL_INLINE void ImGuiMenu::draw_viewer_menu(igl::opengl::glfw::Viewer *viewer, s
         window_flags
     );
     if (ImGui::Button("start game")) {
-        viewer->start_first_level();
+        viewer->start_level();
     }
     ImGui::Text("score = %d", viewer->score);
 

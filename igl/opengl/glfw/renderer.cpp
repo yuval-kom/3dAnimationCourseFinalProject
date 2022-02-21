@@ -217,6 +217,26 @@ void Renderer::RotateCamera(float amtX, float amtY)
 	core().camera_eye = Mat* core().camera_eye;
 	
 }
+void Renderer::RotateCameraX(float amtX)
+{
+	core().camera_eye = core().camera_eye + Eigen::Vector3f(amtX, 0, 0);
+	Eigen::Matrix3f Mat;
+	Mat << 1, 0, 0,
+		0, cos(amtX), -sin(amtX),
+		0, sin(amtX), cos(amtX);
+	core().camera_eye = Mat * core().camera_eye;
+}
+void Renderer::RotateCameraZ(float amtZ)
+{
+	core().camera_eye = core().camera_eye + Eigen::Vector3f(0, 0, amtZ);
+	Eigen::Matrix3f Mat;
+	Mat << cos(amtZ), -sin(amtZ), 0,
+		sin(amtZ), cos(amtZ), 0,
+		0, 0, 1;
+	core().camera_eye = Mat * core().camera_eye;
+
+
+}
 
 Renderer::~Renderer()
 {

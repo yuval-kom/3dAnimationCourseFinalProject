@@ -208,6 +208,7 @@ bool Display::launch_rendering(bool loop)
 	{
 
 		double tic = igl::get_seconds();
+		
 		renderer->Animate();
 		renderer->draw(window);
 
