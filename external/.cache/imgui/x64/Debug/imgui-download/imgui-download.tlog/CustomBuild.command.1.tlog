@@ -1,20 +1,20 @@
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-MKDIR.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-MKDIR.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/cmake/../external/imgui
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/cmake/../external/imgui
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/build/imgui-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/build/imgui-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -22,15 +22,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-DOWNLOAD.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-DOWNLOAD.RULE
 setlocal
-cd C:\AnimationCourseEngine\external
+cd C:\3dAnimationCourseFinalProject\external
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/tmp/imgui-download-gitclone.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/tmp/imgui-download-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -38,13 +38,13 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-UPDATE.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-UPDATE.RULE
 setlocal
-cd C:\AnimationCourseEngine\external\imgui
+cd C:\3dAnimationCourseFinalProject\external\imgui
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/tmp/imgui-download-gitupdate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/tmp/imgui-download-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -52,11 +52,11 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-PATCH.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-PATCH.RULE
 setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -64,31 +64,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-CONFIGURE.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-CONFIGURE.RULE
 setlocal
-cd C:\AnimationCourseEngine\build\imgui-build
-if %errorlevel% neq 0 goto :cmEnd
-C:
-if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
-if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-configure
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-BUILD.RULE
-setlocal
-cd C:\AnimationCourseEngine\build\imgui-build
+cd C:\3dAnimationCourseFinalProject\build\imgui-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -96,15 +80,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-INSTALL.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-BUILD.RULE
 setlocal
-cd C:\AnimationCourseEngine\build\imgui-build
+cd C:\3dAnimationCourseFinalProject\build\imgui-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -112,15 +96,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\276140A0D05A92AF8AE129018C902287\IMGUI-DOWNLOAD-TEST.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-INSTALL.RULE
 setlocal
-cd C:\AnimationCourseEngine\build\imgui-build
+cd C:\3dAnimationCourseFinalProject\build\imgui-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -128,13 +112,15 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\06D9FD06DD9CDD44E9EA02018E45B2EB\IMGUI-DOWNLOAD-COMPLETE.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DB5375CE6794A88A61C955C9CD4674BE\IMGUI-DOWNLOAD-TEST.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/Debug
+cd C:\3dAnimationCourseFinalProject\build\imgui-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/Debug/imgui-download-complete
+C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-done
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -142,7 +128,21 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\63986C1CD0E6C04270494D2674E3A99C\IMGUI-DOWNLOAD.RULE
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\879C2C348D280CDBEA49EEC702D8A8DC\IMGUI-DOWNLOAD-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/imgui/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/CMakeFiles/Debug/imgui-download-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/imgui/imgui-download-prefix/src/imgui-download-stamp/Debug/imgui-download-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKEFILES\DD30AD39B7F73DEFFF1D0908AB73E164\IMGUI-DOWNLOAD.RULE
 setlocal
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
@@ -150,9 +150,9 @@ endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\IMGUI\CMAKELISTS.TXT
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\IMGUI\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/imgui -BC:/AnimationCourseEngine/external/.cache/imgui --check-stamp-file C:/AnimationCourseEngine/external/.cache/imgui/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/3dAnimationCourseFinalProject/external/.cache/imgui -BC:/3dAnimationCourseFinalProject/external/.cache/imgui --check-stamp-file C:/3dAnimationCourseFinalProject/external/.cache/imgui/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

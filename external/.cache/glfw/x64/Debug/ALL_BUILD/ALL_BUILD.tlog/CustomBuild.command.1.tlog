@@ -1,6 +1,6 @@
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\GLFW\CMAKELISTS.TXT
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\GLFW\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/glfw -BC:/AnimationCourseEngine/external/.cache/glfw --check-stamp-file C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/3dAnimationCourseFinalProject/external/.cache/glfw -BC:/3dAnimationCourseFinalProject/external/.cache/glfw --check-stamp-file C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

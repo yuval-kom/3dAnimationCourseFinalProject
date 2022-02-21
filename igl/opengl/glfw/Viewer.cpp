@@ -41,6 +41,8 @@
 #include <igl/snap_to_canonical_view_quat.h>
 #include <igl/unproject.h>
 #include <igl/serialize.h>
+#include <igl/jet.h>
+
 
 #include <Windows.h>
 #include <mmsystem.h>
@@ -74,7 +76,6 @@ namespace glfw
   {
     data_list.front().id = 0;
     level = 1;
-
   
 
     // Temporary variables initialization
@@ -379,8 +380,9 @@ namespace glfw
       data().show_overlay = 1;
       data().show_lines = 1;
       data().show_overlay_depth = 2;
-      data().set_visible(false, 1);
-      data().set_visible(true, 2);
+      data().set_visible(true, 1);
+      //data().set_visible(false, 1);
+      //data().set_visible(true, 2);
       parents.push_back(-1);
       selected_data_index = savedIndx;
       
@@ -397,7 +399,7 @@ namespace glfw
       case 2:
           numToAdd = 4;
           for (int i = 1; i < numToAdd - 2; i++) {
-              load_mesh_from_file("C:/FinalProjectAnimation/tutorial/data/cube.obj");
+              load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/cube.obj");
               int currIndex = data_list.size() - 1;
               AddNewShape(currIndex);
               data_list[currIndex].isPrize = false;
@@ -406,18 +408,21 @@ namespace glfw
               data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
           }
       }
-
       for (int i = 1; i < 3; i++) {
-          load_mesh_from_file("C:/FinalProjectAnimation/tutorial/data/sphere.obj");
+          load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/sphere.obj");
           int currIndex = data_list.size() - 1;
           AddNewShape(currIndex);
           data_list[currIndex].isPrize = true;
           data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() %10 + double(i)*2, 0, rand() % 10 - double(i) * 2), false);
           data_list[currIndex].gamePoints = 5;
           data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
+          Eigen::MatrixXd C;
+          Eigen::VectorXd Z = data_list[currIndex].V.col(2);
+          igl::jet(Z, true, C);
+          data_list[currIndex].set_colors(C);
       }
       time(&level_start_time);
-      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+      //PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
       isDuringLevel = true;
       isActive = true;
   }
@@ -428,11 +433,11 @@ namespace glfw
       }
       if (isWon) {
          std::cout << " Finish level";
-         PlaySound(TEXT("C:/AnimationCourseEngine/sounds/WinLevel.wav"), NULL, SND_FILENAME | SND_ASYNC);
+         //PlaySound(TEXT("C:/AnimationCourseEngine/sounds/WinLevel.wav"), NULL, SND_FILENAME | SND_ASYNC);
          level++;
       }
       else {
-          PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
+          //PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
           std::cout << " YOU LOSE!";
       }
   }

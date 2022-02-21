@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-mkdir.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-mkdir.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-download.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-download.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-update.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-update.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-patch.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-patch.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-configure.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-configure.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-build.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-build.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-install.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-install.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\276140a0d05a92af8ae129018c902287\imgui-download-test.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\db5375ce6794a88a61c955c9cd4674be\imgui-download-test.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\06d9fd06dd9cdd44e9ea02018e45b2eb\imgui-download-complete.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\879c2c348d280cdbea49eec702d8a8dc\imgui-download-complete.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\63986c1cd0e6c04270494d2674e3a99c\imgui-download.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\dd30ad39b7f73defff1d0908ab73e164\imgui-download.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeLists.txt" />
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\AnimationCourseEngine\external\.cache\imgui\CMakeFiles\imgui-download" />
+    <None Include="C:\3dAnimationCourseFinalProject\external\.cache\imgui\CMakeFiles\imgui-download" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{817D3E99-E7D6-37C1-B410-EA3E0E09ADA6}</UniqueIdentifier>
+      <UniqueIdentifier>{A6388FB2-801E-3809-9E06-6850CF681213}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@
 #include "ImGuiHelpers.h"
 
 #include "ImGuiMenu.h"
-#include "../imgui.h"
+#include "external/imgui/imgui.h"
 #include "igl/opengl/glfw/imgui/imgui_impl_glfw.h"
 #include "igl/opengl/glfw/imgui/imgui_impl_opengl3.h"
 
@@ -436,6 +436,54 @@ IGL_INLINE float ImGuiMenu::hidpi_scaling()
   glfwGetWindowContentScale(window, &xscale, &yscale);
   return 0.5 * (xscale + yscale);
 }
+
+
+IGL_INLINE void ImGuiMenu::init_game_menu(Display* disp)
+{
+    IMGUI_CHECKVERSION();
+    static ImGuiContext* __global_context = ImGui::CreateContext();
+    context_ = __global_context;
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGui::StyleColorsLight();
+
+    ImGui_ImplGlfw_InitForOpenGL(disp->window, false);
+    ImGui_ImplOpenGL3_Init("#version 150");
+
+    ImGui::GetIO().IniFilename = nullptr;
+
+
+}
+
+IGL_INLINE void ImGuiMenu::draw_game_menu(igl::opengl::glfw::Viewer* viewer, std::vector<igl::opengl::ViewerCore>& core, int level) {
+
+    ImGui::Begin("Snake");
+    if (level == 1) {
+        if (ImGui::Button("Start Level 1")) {
+            viewer->start_level();
+        }
+    }
+    if (level == 2) {
+        if (ImGui::Button("Start Level 2")) {
+            viewer->start_level();
+        }
+    }
+    
+    if (viewer->isActive) {
+        ImGui::Text("score: %d", viewer->score); 
+    }
+    
+    ImGui::End();
+
+}
+
+
+
+IGL_INLINE void ImGuiMenu::clean_up() {
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+}
+
 
 } // end namespace
 } // end namespace

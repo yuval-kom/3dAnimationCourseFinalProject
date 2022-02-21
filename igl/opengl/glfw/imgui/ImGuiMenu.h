@@ -87,7 +87,7 @@ public:
 
   // Easy-to-customize callbacks
   std::function<void(void)> callback_draw_viewer_window;
-  std::function<void(void)> callback_draw_viewer_menu;
+  std::function<void(int)> callback_draw_game_menu;
   std::function<void(void)> callback_draw_custom_window;
 
   IGL_INLINE void draw_labels_window(igl::opengl::glfw::Viewer* viewer, const igl::opengl::ViewerCore* core);
@@ -106,6 +106,14 @@ public:
   IGL_INLINE float hidpi_scaling();
 
   float menu_scaling() { return hidpi_scaling_ / pixel_ratio_; }
+
+  IGL_INLINE void init_game_menu(Display* disp);
+
+  IGL_INLINE void draw_game_menu(igl::opengl::glfw::Viewer* viewer, std::vector<igl::opengl::ViewerCore>& core, int level);
+
+
+  IGL_INLINE void clean_up();
+
 };
 
 } // end namespace

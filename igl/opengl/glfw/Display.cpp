@@ -164,33 +164,34 @@ Display::Display(int windowWidth, int windowHeight, const std::string& title)
 bool Display::launch_rendering(bool loop)
 {
 	//CUBE MAP
-	//Shader DaylightBoxShader("C:/FinalProjectAnimation/Shaders/daylightbox.vs", "C:/FinalProjectAnimation/Shaders/daylightbox.fs");
-	//unsigned int boxVAO, boxVBO;
-	//glGenVertexArrays(1, &boxVAO);
-	//glGenBuffers(1, &boxVBO);
-	//glBindVertexArray(boxVAO);
-	//glBindBuffer(GL_ARRAY_BUFFER, boxVBO);
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(DayLightBoxV), &DayLightBoxV, GL_STATIC_DRAW);
-	//glEnableVertexAttribArray(0);
-	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+
+	Shader DaylightBoxShader("C:/3dAnimationCourseFinalProject/Shaders/daylightbox.vs", "C:/3dAnimationCourseFinalProject/Shaders/daylightbox.fs");
+	unsigned int boxVAO, boxVBO;
+	glGenVertexArrays(1, &boxVAO);
+	glGenBuffers(1, &boxVBO);
+	glBindVertexArray(boxVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, boxVBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(DayLightBoxV), &DayLightBoxV, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
 
-	//std::vector<std::string> faces
-	//{
-	//	//C:\FinalProjectAnimation\textures\DayLightBox
-	//	"C:/FinalProjectAnimation/textures/DayLightBox/Right.jpg",
-	//	"C:/FinalProjectAnimation/textures/DayLightBox/Left.jpg",
-	//	"C:/FinalProjectAnimation/textures/DayLightBox/Top.jpg",
-	//	"C:/FinalProjectAnimation/textures/DayLightBox/Bottom.jpg",
-	//	"C:/FinalProjectAnimation/textures/DayLightBox/Back.jpg",
-	//	"C:/FinalProjectAnimation/textures/DayLightBox/Front.jpg"
+	std::vector<std::string> faces
+	{
+		
+		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Right.jpg",
+		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Left.jpg",
+		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Top.jpg",
+		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Bottom.jpg",
+		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Back.jpg",
+		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Front.jpg"
 
-	//};
+	};
 
-	//unsigned int cubemapTexture = this->loadCubemap(faces);
+	unsigned int cubemapTexture = this->loadCubemap(faces);
 
-	//DaylightBoxShader.use();
-	//DaylightBoxShader.setInt("daylightbox", 0);
+	DaylightBoxShader.use();
+	DaylightBoxShader.setInt("daylightbox", 0);
 
 
 	// glfwMakeContextCurrent(window);
@@ -211,10 +212,13 @@ bool Display::launch_rendering(bool loop)
 		
 		renderer->Animate();
 		renderer->draw(window);
+		renderer->game_menu->callback_draw_game_menu(renderer->GetScene()->level);
+		
+
 
 
 		//CUBE MAP
-		/*glm::mat4 view = camera.GetViewMatrix();
+		glm::mat4 view = camera.GetViewMatrix();
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)1000 / 800, 0.1f, 100.0f);
 		glDepthFunc(GL_LEQUAL);
 		DaylightBoxShader.use();
@@ -226,8 +230,8 @@ bool Display::launch_rendering(bool loop)
 		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		glBindVertexArray(0);
-		glDepthFunc(GL_LESS);*/
-
+		glDepthFunc(GL_LESS);
+		renderer->game_menu->post_draw();
 		glfwSwapBuffers(window);
 		if (renderer->core().is_animating || frame_counter++ < num_extra_frames)
 		{//motion

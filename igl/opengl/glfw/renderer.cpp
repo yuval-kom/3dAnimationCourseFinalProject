@@ -59,12 +59,12 @@ IGL_INLINE void Renderer::draw( GLFWwindow* window)
 	{
 		core.clear_framebuffers();
 	}
-	int coreIndx = 1;
-	if (menu)
+	//int coreIndx = 1;
+	/*if (menu)
 	{
 		menu->pre_draw();
 		menu->callback_draw_viewer_menu();
-	}
+	}*/
 	for (auto& core : core_list)
 	{
 		int indx = 0;
@@ -73,19 +73,21 @@ IGL_INLINE void Renderer::draw( GLFWwindow* window)
 			
 			if (mesh.is_visible & core.id)
 			{// for kinematic chain change scn->MakeTrans to parent matrix
-				
+				//core.draw(scn->MakeTransScale().cast<float>(), mesh);
+
 				core.draw(scn->MakeTransScale()*scn->CalcParentsTrans(indx).cast<float>(),mesh);
 			}
-			indx++;
 		}
+		indx++;
 
 		
 	}
-	if (menu)
+
+	/*if (menu)
 	{
 		menu->post_draw();
 		
-	}
+	}*/
 
 }
 
@@ -93,7 +95,24 @@ void Renderer::SetScene(igl::opengl::glfw::Viewer* viewer)
 {
 	scn = viewer;
 }
+IGL_INLINE void Renderer::init(igl::opengl::glfw::Viewer* viewer, igl::opengl::glfw::imgui::ImGuiMenu* _game_menu)
+{
+	scn = viewer;
+	doubleVariable = 0;
+	core().init();
+	core().align_camera_center(scn->data().V, scn->data().F);
+	game_menu = _game_menu;
 
+	if (game_menu)
+	{
+		game_menu->callback_draw_game_menu = [&](int level)
+		{
+			game_menu->pre_draw();
+			game_menu->draw_game_menu(scn, core_list, level);
+
+		};
+	}
+}
 IGL_INLINE void Renderer::init(igl::opengl::glfw::Viewer* viewer,int coresNum, igl::opengl::glfw::imgui::ImGuiMenu* _menu)
 {
 	scn = viewer;
@@ -125,15 +144,15 @@ IGL_INLINE void Renderer::init(igl::opengl::glfw::Viewer* viewer,int coresNum, i
 
 		core_index(left_view - 1);
 	}
-
-	if (menu)
+	
+	/*if (menu)
 	{
 		menu->callback_draw_viewer_menu = [&]()
 		{
 			// Draw parent menu content
 			menu->draw_viewer_menu(scn,core_list);
 		};
-	}
+	}*/
 }
 
 void Renderer::UpdatePosition(double xpos, double ypos)

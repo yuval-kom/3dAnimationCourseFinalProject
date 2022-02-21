@@ -1,6 +1,6 @@
-^C:\ANIMATIONCOURSEENGINE\EXTERNAL\.CACHE\LIBIGL-IMGUI\CMAKELISTS.TXT
+^C:\3DANIMATIONCOURSEFINALPROJECT\EXTERNAL\.CACHE\LIBIGL-IMGUI\CMAKELISTS.TXT
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/libigl-imgui -BC:/AnimationCourseEngine/external/.cache/libigl-imgui --check-stamp-file C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui -BC:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui --check-stamp-file C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

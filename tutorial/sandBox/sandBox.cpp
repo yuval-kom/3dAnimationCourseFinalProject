@@ -48,7 +48,7 @@ void SandBox::Init(const std::string& config)
             data().show_overlay = 1;
             data().show_lines = 1;
             data().show_overlay_depth = 2;
-            data().set_visible(false, 1);
+            data().set_visible(true, 1);
             parents.push_back(-1);
             
            // //Assignmet1

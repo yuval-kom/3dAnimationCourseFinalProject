@@ -2,37 +2,37 @@
 	"sources" : 
 	[
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/libigl-imgui-download"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/libigl-imgui-download"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/fddf1e6e02f05f9a95e648df2a703e81/libigl-imgui-download.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/c2c4c6f8452378bf6a76673e65c2020c/libigl-imgui-download.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/6673822f490b99bd22e5a0c5d5fb642c/libigl-imgui-download-complete.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/9a8ebc43e27a297455f78a63381ed471/libigl-imgui-download-complete.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-build.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-build.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-configure.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-configure.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-download.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-download.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-install.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-install.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-mkdir.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-mkdir.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-patch.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-patch.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-test.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-test.rule"
 		},
 		{
-			"file" : "C:/AnimationCourseEngine/external/.cache/libigl-imgui/CMakeFiles/284340e32b512ebcd317aa4aef57c72f/libigl-imgui-download-update.rule"
+			"file" : "C:/3dAnimationCourseFinalProject/external/.cache/libigl-imgui/CMakeFiles/5f7453195a7a41a7d38822e5bbe15616/libigl-imgui-download-update.rule"
 		}
 	],
 	"target" : 

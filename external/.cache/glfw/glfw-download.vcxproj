@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C5EF8687-F575-38F6-9D6F-611F209BF0EB}</ProjectGuid>
+    <ProjectGuid>{BCC7A7CC-16C7-3C90-ABD5-3E56AE9FA94C}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -105,24 +105,24 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-mkdir.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-mkdir.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating directories for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/cmake/../external/glfw
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/cmake/../external/glfw
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/build/glfw-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/build/glfw-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -131,25 +131,25 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Creating directories for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/cmake/../external/glfw
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/cmake/../external/glfw
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/build/glfw-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/build/glfw-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -158,25 +158,25 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Creating directories for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/cmake/../external/glfw
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/cmake/../external/glfw
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/build/glfw-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/build/glfw-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -185,25 +185,25 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Creating directories for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/cmake/../external/glfw
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/cmake/../external/glfw
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/build/glfw-build
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/build/glfw-build
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -212,21 +212,21 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-download.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-download.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing download step (git clone) for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\AnimationCourseEngine\external
+cd C:\3dAnimationCourseFinalProject\external
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -234,18 +234,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing download step (git clone) for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\AnimationCourseEngine\external
+cd C:\3dAnimationCourseFinalProject\external
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -253,18 +253,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Performing download step (git clone) for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\AnimationCourseEngine\external
+cd C:\3dAnimationCourseFinalProject\external
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -272,18 +272,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Performing download step (git clone) for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\AnimationCourseEngine\external
+cd C:\3dAnimationCourseFinalProject\external
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -291,20 +291,20 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\glfw-download-gitinfo.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-update.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-update.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing update step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\AnimationCourseEngine\external\glfw
+cd C:\3dAnimationCourseFinalProject\external\glfw
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -312,17 +312,17 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing update step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\AnimationCourseEngine\external\glfw
+cd C:\3dAnimationCourseFinalProject\external\glfw
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -330,17 +330,17 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Performing update step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\AnimationCourseEngine\external\glfw
+cd C:\3dAnimationCourseFinalProject\external\glfw
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -348,17 +348,17 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Performing update step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\AnimationCourseEngine\external\glfw
+cd C:\3dAnimationCourseFinalProject\external\glfw
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/tmp/glfw-download-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -366,19 +366,19 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-patch.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-patch.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No patch step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -386,15 +386,15 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No patch step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -402,15 +402,15 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No patch step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -418,15 +418,15 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No patch step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -434,23 +434,23 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-configure.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-configure.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No configure step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -458,18 +458,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No configure step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -477,18 +477,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No configure step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -496,18 +496,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No configure step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -515,22 +515,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-build.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-build.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No build step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -538,18 +538,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No build step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -557,18 +557,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No build step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -576,18 +576,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No build step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -595,22 +595,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-install.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-install.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No install step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -618,18 +618,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No install step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -637,18 +637,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No install step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -656,18 +656,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No install step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -675,22 +675,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\5e25a02afe57ff20a5ee6b32510c4169\glfw-download-test.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50794d27bad3e29a4ace244d1ebdd6c7\glfw-download-test.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No test step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -698,18 +698,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">No test step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -717,18 +717,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">No test step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -736,18 +736,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">No test step for 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-cd C:\AnimationCourseEngine\build\glfw-build
+cd C:\3dAnimationCourseFinalProject\build\glfw-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -755,20 +755,20 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\932ff6510babac41d0b1b7182c3908ba\glfw-download-complete.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\50be7f6cc9dfca455511f3c72c37a275\glfw-download-complete.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Completed 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -776,17 +776,17 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Completed 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -794,17 +794,17 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Completed 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -812,17 +812,17 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Completed 'glfw-download'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/$(Configuration)/glfw-download-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/AnimationCourseEngine/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/3dAnimationCourseFinalProject/external/.cache/glfw/glfw-download-prefix/src/glfw-download-stamp/$(Configuration)/glfw-download-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -830,14 +830,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-install;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-mkdir;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-download;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-update;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-patch;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-configure;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-build;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\src\glfw-download-stamp\$(Configuration)\glfw-download-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\6639d8bbc95f0f631f5271360c81c0da\glfw-download.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\41275592d3b09e5aeebbeabc77de4adc\glfw-download.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 :cmEnd
@@ -846,8 +846,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
@@ -858,8 +858,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
@@ -870,8 +870,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
@@ -882,18 +882,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\$(Configuration)\glfw-download-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\glfw-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeLists.txt">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/AnimationCourseEngine/external/.cache/glfw/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/glfw -BC:/AnimationCourseEngine/external/.cache/glfw --check-stamp-file C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/3dAnimationCourseFinalProject/external/.cache/glfw -BC:/3dAnimationCourseFinalProject/external/.cache/glfw --check-stamp-file C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -901,12 +901,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/AnimationCourseEngine/external/.cache/glfw/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/glfw -BC:/AnimationCourseEngine/external/.cache/glfw --check-stamp-file C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/3dAnimationCourseFinalProject/external/.cache/glfw -BC:/3dAnimationCourseFinalProject/external/.cache/glfw --check-stamp-file C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -914,12 +914,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/AnimationCourseEngine/external/.cache/glfw/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/glfw -BC:/AnimationCourseEngine/external/.cache/glfw --check-stamp-file C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/3dAnimationCourseFinalProject/external/.cache/glfw -BC:/3dAnimationCourseFinalProject/external/.cache/glfw --check-stamp-file C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -927,12 +927,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/AnimationCourseEngine/external/.cache/glfw/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/AnimationCourseEngine/external/.cache/glfw -BC:/AnimationCourseEngine/external/.cache/glfw --check-stamp-file C:/AnimationCourseEngine/external/.cache/glfw/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/3dAnimationCourseFinalProject/external/.cache/glfw -BC:/3dAnimationCourseFinalProject/external/.cache/glfw --check-stamp-file C:/3dAnimationCourseFinalProject/external/.cache/glfw/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -940,18 +940,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\AnimationCourseEngine\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\3.22.0-rc1\CMakeSystem.cmake;C:\3dAnimationCourseFinalProject\external\.cache\glfw\glfw-download-prefix\tmp\glfw-download-cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject-gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.22\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.22\Modules\RepositoryInfo.txt.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\AnimationCourseEngine\external\.cache\glfw\CMakeFiles\glfw-download">
+    <None Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\CMakeFiles\glfw-download">
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\AnimationCourseEngine\external\.cache\glfw\ZERO_CHECK.vcxproj">
-      <Project>{F97F6C62-9946-38A5-93C4-1FDF3D64422D}</Project>
+    <ProjectReference Include="C:\3dAnimationCourseFinalProject\external\.cache\glfw\ZERO_CHECK.vcxproj">
+      <Project>{64DCA7A8-0687-35B7-8B22-244E012EF322}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

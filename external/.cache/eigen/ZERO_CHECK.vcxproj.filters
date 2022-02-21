@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\AnimationCourseEngine\external\.cache\eigen\CMakeFiles\800d058414d560df73fc97f8a8a0ca85\generate.stamp.rule">
+    <CustomBuild Include="C:\3dAnimationCourseFinalProject\external\.cache\eigen\CMakeFiles\f8456a0439e72be1c74f77ad55696735\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{12010263-CD23-332E-AF83-235674C64901}</UniqueIdentifier>
+      <UniqueIdentifier>{2B052385-831B-3A56-AF83-D2E4A36F63AB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

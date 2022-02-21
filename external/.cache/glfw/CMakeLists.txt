@@ -8,8 +8,8 @@ project(glfw-download NONE)
 include(ExternalProject)
 ExternalProject_Add(glfw-download
                     TLS_VERIFY;OFF;GIT_CONFIG;advice.detachedHead=false;GIT_REPOSITORY;https://github.com/glfw/glfw.git;GIT_TAG;3.3
-                    SOURCE_DIR          "C:/AnimationCourseEngine/cmake/../external/glfw"
-                    BINARY_DIR          "C:/AnimationCourseEngine/build/glfw-build"
+                    SOURCE_DIR          "C:/3dAnimationCourseFinalProject/cmake/../external/glfw"
+                    BINARY_DIR          "C:/3dAnimationCourseFinalProject/build/glfw-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

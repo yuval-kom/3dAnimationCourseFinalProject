@@ -13,10 +13,14 @@ struct GLFWwindow;
 class Renderer 
 {
 public:
+	igl::opengl::glfw::imgui::ImGuiMenu* game_menu;
+
 	Renderer();
 	~Renderer();
 	IGL_INLINE void draw( GLFWwindow* window);
 	IGL_INLINE void init(igl::opengl::glfw::Viewer* scn,int coresNum, igl::opengl::glfw::imgui::ImGuiMenu *_menu);
+	IGL_INLINE void init(igl::opengl::glfw::Viewer* scn, igl::opengl::glfw::imgui::ImGuiMenu* _game_menu);
+
 	
 	//IGL_INLINE bool key_pressed(unsigned int unicode_key, int modifiers);
 
