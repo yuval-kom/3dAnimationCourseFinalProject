@@ -75,7 +75,9 @@ namespace glfw
 	isActive(false)
   {
     data_list.front().id = 0;
-    level = 1;
+    level = 0;
+    isDuringLevel = false;
+    isWonLevel = false;
   
 
     // Temporary variables initialization
@@ -373,12 +375,12 @@ namespace glfw
   void Viewer::AddNewShape(int savedIndx) {
 
       data().show_overlay_depth = true;
-      data_list.back().show_faces = 3;
-      data().show_texture = true;
+      //data_list.back().show_faces = 3;
+      //data().show_texture = true;
       data().point_size = 10;
       data().line_width = 2;
-      data().show_overlay = 1;
-      data().show_lines = 1;
+      //data().show_overlay = 1;
+      data().show_lines = false;
       data().show_overlay_depth = 2;
       data().set_visible(true, 1);
       //data().set_visible(false, 1);
@@ -388,57 +390,100 @@ namespace glfw
       
       
   }
+  void Viewer::moveObjects() {
+      for (int i = 1; i < data_list.size(); i++) {
+          ViewerData* currData = &data_list[i];
+          currData->MyTranslate(currData->direction, false);
+          Eigen::RowVector4d objectPosition = (currData->MakeTransd() * Eigen::Vector4d(0, 0, 0, 1));
+          if (objectPosition(2) <= -5 || objectPosition(2) > 18) { //z
+              currData->direction << currData->direction(0), currData->direction(1), -currData->direction(2);
+          }
+          if (objectPosition(1) > 18 || objectPosition(1) < -18) { //y
+              currData->direction << currData->direction(0), -currData->direction(1), currData->direction(2);
+          }
 
+      }
+  }
   void Viewer::start_level() {
-      int numToAdd;
+      score = 0;
+
+      int numToAdd = 0;
+      Vector3d dir;
       switch (level)
       {
-      case 1:
+      case 0:
           numToAdd = 3;
+          dir = Vector3d(0, -0.03, 0.03);
           break;
-      case 2:
-          numToAdd = 4;
-          for (int i = 1; i < numToAdd - 2; i++) {
-              load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/cube.obj");
+      case 1:
+          numToAdd = 4; 
+          dir = Vector3d(0, 0.06, -0.06);
+          for (int i = 1; i < numToAdd - 1; i++) {
+              load_mesh_from_file("C:/AnimationCourseEngine/tutorial/data/cube.obj");
               int currIndex = data_list.size() - 1;
               AddNewShape(currIndex);
               data_list[currIndex].isPrize = false;
-              data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() % 10 + double(i) * 2, 0, rand() % 10 - double(i) * 2), false);
+              data_list[currIndex].MyTranslate(Eigen::Vector3d(0, rand() % 10 + double(i) * 2, rand() % 10 - double(i) * 2), false);
               data_list[currIndex].gamePoints = -1;
               data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
+              data_list[currIndex].set_colors(Eigen::RowVector3d(0.6, 0.2, 0.1));
+              data_list[currIndex].direction = dir;
+              dir = -dir;
+
           }
       }
-      for (int i = 1; i < 3; i++) {
-          load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/sphere.obj");
+
+      ScoreGoal = (numToAdd * 5);
+      for (int i = 1; i <= numToAdd; i++) {
+          load_mesh_from_file("C:/AnimationCourseEngine/tutorial/data/sphere.obj");
           int currIndex = data_list.size() - 1;
           AddNewShape(currIndex);
           data_list[currIndex].isPrize = true;
-          data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() %10 + double(i)*2, 0, rand() % 10 - double(i) * 2), false);
+          data_list[currIndex].MyTranslate(Eigen::Vector3d(0, rand() % 10 + double(i) * 2, rand() % 10 - double(i) * 2), false);
           data_list[currIndex].gamePoints = 5;
           data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
+          data_list[currIndex].direction = dir;
+          dir = -dir;
+
           Eigen::MatrixXd C;
           Eigen::VectorXd Z = data_list[currIndex].V.col(2);
           igl::jet(Z, true, C);
           data_list[currIndex].set_colors(C);
       }
+
+      //set to initial positoin
+      data_list[0].MyTranslate((data_list[0].MakeTransd().inverse() * Vector4d(0, 0, 0, 1)).head(3), false);
+      data_list[0].MyRotate(data_list[0].GetRotation().inverse());
       time(&level_start_time);
-      //PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
       isDuringLevel = true;
       isActive = true;
+
+  }
+
+  void Viewer::playBiteSound() {
+      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/bite.wav"), NULL, SND_FILENAME);
+      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
   }
 
   void Viewer::resetScene(bool isWon) {
-      for (int i = 1; i < data_list.size(); i++) {
+      int numOfObjects = data_list.size();
+      for (int i = numOfObjects - 1; i > 0; i--) {
+          std::cout << "inn" << std::endl;
           erase_mesh(i);
       }
       if (isWon) {
          std::cout << " Finish level";
-         //PlaySound(TEXT("C:/AnimationCourseEngine/sounds/WinLevel.wav"), NULL, SND_FILENAME | SND_ASYNC);
+         PlaySound(TEXT("C:/AnimationCourseEngine/sounds/WinLevel.wav"), NULL, SND_FILENAME);
+         isDuringLevel = false;
+         isWonLevel = true;
          level++;
       }
       else {
-          //PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameOver.wav"), NULL, SND_FILENAME | SND_ASYNC);
+          PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameOver.wav"), NULL, SND_FILENAME);
           std::cout << " YOU LOSE!";
+          isDuringLevel = false;
+          isWonLevel = false;
       }
   }
 

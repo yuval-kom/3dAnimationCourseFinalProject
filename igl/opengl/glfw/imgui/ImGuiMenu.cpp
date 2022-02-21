@@ -47,7 +47,7 @@ IGL_INLINE void ImGuiMenu::init(Display* disp)
     ImGui_ImplGlfw_InitForOpenGL(disp->window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
     ImGui::GetIO().IniFilename = nullptr;
-    ImGui::StyleColorsDark();
+    ImGui::StyleColorsLight();
     ImGuiStyle& style = ImGui::GetStyle();
     style.FrameRounding = 5.0f;
     reload_font();
@@ -440,31 +440,88 @@ IGL_INLINE float ImGuiMenu::hidpi_scaling()
 
 IGL_INLINE void ImGuiMenu::init_game_menu(Display* disp)
 {
-    IMGUI_CHECKVERSION();
-    static ImGuiContext* __global_context = ImGui::CreateContext();
-    context_ = __global_context;
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-    ImGui::StyleColorsLight();
+  
+    if (disp->window)
+    {
+        IMGUI_CHECKVERSION();
+        if (!context_)
+        {
+            // Single global context by default, but can be overridden by the user
+            static ImGuiContext* __global_context = ImGui::CreateContext();
+            context_ = __global_context;
+        }
+        const char* glsl_version = "#version 150";
 
-    ImGui_ImplGlfw_InitForOpenGL(disp->window, false);
-    ImGui_ImplOpenGL3_Init("#version 150");
-
-    ImGui::GetIO().IniFilename = nullptr;
-
+        ImGui_ImplGlfw_InitForOpenGL(disp->window, true);
+        ImGui_ImplOpenGL3_Init(glsl_version);
+        ImGui::GetIO().IniFilename = nullptr;
+        ImGui::StyleColorsDark();
+        ImGuiStyle& style = ImGui::GetStyle();
+        style.FrameRounding = 5.0f;
+        reload_font();
+    }
 
 }
 
 IGL_INLINE void ImGuiMenu::draw_game_menu(igl::opengl::glfw::Viewer* viewer, std::vector<igl::opengl::ViewerCore>& core, int level) {
 
-    ImGui::Begin("Snake");
-    if (level == 1) {
-        if (ImGui::Button("Start Level 1")) {
-            viewer->start_level();
+    bool* p_open = NULL;
+    static bool no_titlebar = false;
+    static bool no_scrollbar = false;
+    static bool no_menu = true;
+    static bool no_move = false;
+    static bool no_resize = false;
+    static bool no_collapse = false;
+    static bool no_close = false;
+    static bool no_nav = false;
+    static bool no_background = false;
+    static bool no_bring_to_front = false;
+
+    ImGuiWindowFlags window_flags = 0;
+    if (no_titlebar)        window_flags |= ImGuiWindowFlags_NoTitleBar;
+    if (no_scrollbar)       window_flags |= ImGuiWindowFlags_NoScrollbar;
+    if (!no_menu)           window_flags |= ImGuiWindowFlags_MenuBar;
+    if (no_move)            window_flags |= ImGuiWindowFlags_NoMove;
+    if (no_resize)          window_flags |= ImGuiWindowFlags_NoResize;
+    if (no_collapse)        window_flags |= ImGuiWindowFlags_NoCollapse;
+    if (no_nav)             window_flags |= ImGuiWindowFlags_NoNav;
+    if (no_background)      window_flags |= ImGuiWindowFlags_NoBackground;
+    if (no_bring_to_front)  window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus;
+
+    ImGui::Begin("Snake", p_open,
+        window_flags);
+    ImGui::SetWindowSize(ImVec2(200, 150));
+    if (!viewer->isDuringLevel) {
+        if (viewer->level == 0) {
+            if (ImGui::Button("Start Game")) {
+                viewer->start_level();
+            }
         }
-    }
-    if (level == 2) {
-        if (ImGui::Button("Start Level 2")) {
-            viewer->start_level();
+        else if(level == 1) {
+
+            if (viewer->isWonLevel) {
+                ImGui::Text("LEVEL COMPLETED :)");
+                if (ImGui::Button("Start next level")) {
+                    viewer->start_level();
+                }
+            }
+            else {
+                ImGui::Text("YOU LOSE :( ");
+                if (ImGui::Button("Start Over?")) {
+                    viewer->level = 0;
+                    viewer->start_level();
+                }
+            }
+            
+            
+
+        }
+        else {
+            ImGui::Text("YOU WON, GOOD JOB :) ");
+            if (ImGui::Button("Start Over?")) {
+                viewer->level = 0;
+                viewer->start_level();
+            }
         }
     }
     

@@ -96,6 +96,8 @@ private:
 	RotationList vQ; //rotation of joints
 	vector<Eigen::Vector3d> vT; //translation of joints
 
+	void calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F);
+
 	//void calc_vertex_cost(const Eigen::MatrixXd& V, const Eigen::MatrixXi& F, const Eigen::MatrixXi& E);
 	//void printInfo(const int e, double& cost,Eigen::RowVectorXd& p);
 

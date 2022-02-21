@@ -486,10 +486,8 @@ void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
    
     W.resize(data_list[0].V.rows(), joints.size() - 1);
     add_weights();
-    /*Eigen::MatrixXd S;
-    igl::jet(W, true, S);
-    data_list[0].set_colors(S);*/
-    data_list[0].tree.init(data_list[0].V, data_list[0].F);
+    calcTreeForSnakeHead(V,F);
+    //data_list[0].tree.init(data_list[0].V, data_list[0].F);
     drawBox(&data_list[0].tree.m_box, 0);
 
     RotationList rest_pose;
@@ -503,6 +501,40 @@ void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
         poses[3][i] = rest_pose[2] * bend * rest_pose[2].conjugate();
     }
     
+}
+
+void SandBox::calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F) {
+    MatrixXd V_Head;
+    MatrixXi F_Head;
+    int index = 0;
+    for (int i = 0; i < V.rows(); i++) {
+        if (V.row(i).z() >= 0.6 && V.row(i).z() <= 0.8) {
+           // V_Head = V.row(i);
+            index++;
+        }
+    }
+    V_Head.resize(index, 3);
+    index = 0;
+    for (int i = 0; i < V.rows(); i++) {
+        if (V.row(i).z() >= 0.6 && V.row(i).z() <= 0.8) {
+             V_Head.row(index) = V.row(i);
+               index++;
+        }
+    }
+    data_list[0].tree.init(V, F);
+    /*index = 0;
+    for (int i = 0; i < F.rows(); i++) {
+        int numOfV = 0;
+        for (int j = 0; j <= 2; j++) {
+            if (V.row(F(i, j)).z() >= 0.6 && V.row(F(i, j)).z() <= 0.8) {
+                numOfV++;
+            }
+        }
+        if (numOfV == 3) {
+            F_Head.row(index) = F.row(i);
+            index++;
+        }
+    }*/
 }
 
 
@@ -683,6 +715,7 @@ void SandBox::Animate()
     
     if (isActive)
     {
+        moveObjects();
         for (size_t i = 1; i < data_list.size(); i++) {
             //if (isTooFar(tip_position)){
             if (collisionDetec(&data_list[0].tree, &data_list[i].tree, i)) {
@@ -692,17 +725,18 @@ void SandBox::Animate()
                     resetScene(false);
                 }
                 else {
+                    playBiteSound();
                     score += data_list[i].gamePoints;
                     erase_mesh(i);
                 }
-                if (score == 10) { 
+                if (score == ScoreGoal) {
                     isActive = false;
                     resetScene(true);
                 };
             }
         }
         time_t currentTime;
-        if (difftime(time(&currentTime), level_start_time) >= 240) {
+        if (difftime(time(&currentTime), level_start_time) >= 90) {
             cout << "times up" << endl;
             isActive = false;
             resetScene(false);

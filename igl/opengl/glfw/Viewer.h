@@ -132,6 +132,8 @@ namespace glfw
     void start_level();
     void resetScene(bool isWon);
     void drawBox(Eigen::AlignedBox<double, 3>* box, int index); 
+    void moveObjects();
+    void playBiteSound();
 
     
 public:
@@ -158,6 +160,9 @@ public:
     time_t level_start_time;
     int duration;
     bool isDuringLevel;
+    bool isWonLevel;
+    int ScoreGoal;
+
 
     //int links_number = 3;
     //double link_Len = 1.6;

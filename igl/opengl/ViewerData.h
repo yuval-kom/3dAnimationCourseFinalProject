@@ -232,6 +232,7 @@ public:
   int gamePoints;
   AABB<Eigen::MatrixXd, 3> tree;
   bool isPrize;
+  Eigen::Vector3d direction;
 
   // OpenGL representation of the mesh
   igl::opengl::MeshGL meshgl;
