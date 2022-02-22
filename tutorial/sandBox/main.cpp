@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   //igl::opengl::glfw::imgui::ImGuiMenu* menu = new igl::opengl::glfw::imgui::ImGuiMenu();
   igl::opengl::glfw::imgui::ImGuiMenu* game_menu = new igl::opengl::glfw::imgui::ImGuiMenu();
 
-  viewer.Init("C:/AnimationCourseEngine/build/tutorial/sandBox/configuration.txt");
+  viewer.Init("C:/3dAnimationCourseFinalProject/build/tutorial/sandBox/configuration.txt");
   
   /*viewer.MyRotate(Eigen::Vector3d(2, 0.041, 0.03), 85.9);
   viewer.MyRotate(Eigen::Vector3d(0, 1, 0), 190);*/

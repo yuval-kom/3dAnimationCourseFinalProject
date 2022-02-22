@@ -419,7 +419,7 @@ namespace glfw
           numToAdd = 4; 
           dir = Vector3d(0, 0.06, -0.06);
           for (int i = 1; i < numToAdd - 1; i++) {
-              load_mesh_from_file("C:/AnimationCourseEngine/tutorial/data/cube.obj");
+              load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/cube.obj");
               int currIndex = data_list.size() - 1;
               AddNewShape(currIndex);
               data_list[currIndex].isPrize = false;
@@ -435,7 +435,7 @@ namespace glfw
 
       ScoreGoal = (numToAdd * 5);
       for (int i = 1; i <= numToAdd; i++) {
-          load_mesh_from_file("C:/AnimationCourseEngine/tutorial/data/sphere.obj");
+          load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/sphere.obj");
           int currIndex = data_list.size() - 1;
           AddNewShape(currIndex);
           data_list[currIndex].isPrize = true;
@@ -455,15 +455,15 @@ namespace glfw
       data_list[0].MyTranslate((data_list[0].MakeTransd().inverse() * Vector4d(0, 0, 0, 1)).head(3), false);
       data_list[0].MyRotate(data_list[0].GetRotation().inverse());
       time(&level_start_time);
-      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+      PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
       isDuringLevel = true;
       isActive = true;
 
   }
 
   void Viewer::playBiteSound() {
-      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/bite.wav"), NULL, SND_FILENAME);
-      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+      PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/bite.wav"), NULL, SND_FILENAME);
+      PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
   }
 
   void Viewer::resetScene(bool isWon) {
@@ -474,13 +474,13 @@ namespace glfw
       }
       if (isWon) {
          std::cout << " Finish level";
-         PlaySound(TEXT("C:/AnimationCourseEngine/sounds/WinLevel.wav"), NULL, SND_FILENAME);
+         PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/WinLevel.wav"), NULL, SND_FILENAME);
          isDuringLevel = false;
          isWonLevel = true;
          level++;
       }
       else {
-          PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameOver.wav"), NULL, SND_FILENAME);
+          PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/GameOver.wav"), NULL, SND_FILENAME);
           std::cout << " YOU LOSE!";
           isDuringLevel = false;
           isWonLevel = false;

@@ -12,6 +12,8 @@
 #include <igl/jet.h>
 #include <igl/slice.h>
 #include <igl/slice_into.h>
+#include <map>
+
 
 using namespace Eigen;
 using namespace igl;
@@ -506,10 +508,11 @@ void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
 void SandBox::calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F) {
     MatrixXd V_Head;
     MatrixXi F_Head;
+    std::map<int, int> VtoVhead;
     int index = 0;
     for (int i = 0; i < V.rows(); i++) {
         if (V.row(i).z() >= 0.6 && V.row(i).z() <= 0.8) {
-           // V_Head = V.row(i);
+            V_Head = V.row(i);
             index++;
         }
     }
@@ -518,23 +521,46 @@ void SandBox::calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F) {
     for (int i = 0; i < V.rows(); i++) {
         if (V.row(i).z() >= 0.6 && V.row(i).z() <= 0.8) {
              V_Head.row(index) = V.row(i);
-               index++;
+             VtoVhead[i] = index;
+             index++;
         }
     }
-    data_list[0].tree.init(V, F);
-    /*index = 0;
+    index = 0;
     for (int i = 0; i < F.rows(); i++) {
         int numOfV = 0;
         for (int j = 0; j <= 2; j++) {
-            if (V.row(F(i, j)).z() >= 0.6 && V.row(F(i, j)).z() <= 0.8) {
+            if (VtoVhead.count(F(i,j)) > 0) {
                 numOfV++;
             }
         }
         if (numOfV == 3) {
-            F_Head.row(index) = F.row(i);
             index++;
         }
-    }*/
+    }
+    F_Head.resize(index, 3);
+    index = 0;
+    for (int i = 0; i < F.rows(); i++) {
+        int numOfV = 0;
+        for (int j = 0; j <= 2; j++) {
+            if (VtoVhead.count(F(i, j)) > 0) {
+                numOfV++;
+            }
+        }
+        if (numOfV == 3) {
+            F_Head.row(index) << VtoVhead[F(i, 0)], VtoVhead[F(i, 1)], VtoVhead[F(i, 2)];
+            index++;
+        }
+    }
+
+    data_list[0].tree.init(V_Head, F_Head);
+    /*cout << "VtoVhead:" << endl;
+    for (auto const& pair: VtoVhead) {
+        cout << '[' << pair.first << ']' << pair.second << endl;
+    }
+     << "V:" << endl;
+    cout << V_Head << endl;
+    cout << "F:" << endl;
+    cout << F_Head << endl;*/
 }
 
 
