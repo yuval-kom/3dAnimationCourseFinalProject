@@ -392,7 +392,7 @@ namespace glfw
           ViewerData* currData = &data_list[i];
           currData->MyTranslate(currData->direction, false);
           Eigen::RowVector4d objectPosition = (currData->MakeTransd() * Eigen::Vector4d(0, 0, 0, 1));
-          if (objectPosition(2) <= 5 || objectPosition(2) > 50) { //z
+          if (objectPosition(2) <= 5 || objectPosition(2) > 40) { //z
               currData->direction << currData->direction(0), currData->direction(1), -currData->direction(2);
           }
           if (objectPosition(0) > 10|| objectPosition(0) < -10) { //x
@@ -410,21 +410,22 @@ namespace glfw
       {
       case 0:
           numToAdd = 3;
-          dir = Vector3d(-0.03,0, 0.03);
+          dir = Vector3d(-0.02,0, 0.02);
           break;
       case 1:
           numToAdd = 4; 
-          dir = Vector3d(0.06, 0, -0.06);
+          data_list[0].direction *= 2;
+          dir = Vector3d(0.04, 0, -0.04);
           for (int i = 1; i < numToAdd - 1; i++) {
               load_mesh_from_file("C:/AnimationCourseEngine/tutorial/data/cube.obj");
               int currIndex = data_list.size() - 1;
               AddNewShape(currIndex);
               data_list[currIndex].isPrize = false;
-              data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() % 5, 0, rand() % 45 + double(i) * 2), false);
+              data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() % 5, 0, rand() % 30 + double(i) * 2), false);
               data_list[currIndex].gamePoints = -1;
               data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
               data_list[currIndex].set_colors(Eigen::RowVector3d(0.6, 0.2, 0.1));
-              data_list[currIndex].direction = dir;
+              data_list[currIndex].direction = dir*i;
               dir = -dir;
 
           }
@@ -436,10 +437,10 @@ namespace glfw
           int currIndex = data_list.size() - 1;
           AddNewShape(currIndex);
           data_list[currIndex].isPrize = true;
-          data_list[currIndex].MyTranslate(Eigen::Vector3d(rand()%5,0,rand() % 45 + double(i) * 2), false);
+          data_list[currIndex].MyTranslate(Eigen::Vector3d(rand()%5,0,rand() % 30 + double(i) * 2), false);
           data_list[currIndex].gamePoints = 5;
           data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
-          data_list[currIndex].direction = dir;
+          data_list[currIndex].direction = dir*i;
           dir = -dir;
 
           Eigen::MatrixXd C;

@@ -175,12 +175,12 @@ static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int act
 			break;
 		case GLFW_KEY_UP:
 
-			scn->data_list[0].MyTranslate(Eigen::Vector3d(0, 0, 0.2), false);
+			scn->data_list[0].MyTranslate(Eigen::Vector3d(scn->data_list[0].direction), false);
 
 			break;
 		case GLFW_KEY_DOWN:
 
-			scn->data_list[0].MyTranslate(Eigen::Vector3d(0,0 , -0.2), false);
+			scn->data_list[0].MyTranslate(Eigen::Vector3d(-scn->data_list[0].direction), false);
 
 
 			break;

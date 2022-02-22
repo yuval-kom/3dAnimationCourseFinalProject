@@ -447,6 +447,7 @@ void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
     W.resize(data_list[0].V.rows(), joints.size() - 1);
     add_weights();
     calcTreeForSnakeHead(V,F);
+    data_list[0].direction = Vector3d(0, 0, 0.2);
 
     RotationList rest_pose;
     igl::directed_edge_orientations(C, BE, rest_pose);
@@ -696,6 +697,7 @@ void SandBox::Animate()
                 }
                 else {
                     playBiteSound();
+                    data_list[0].MyScale(Vector3d(1.1, 1, 1));
                     score += data_list[i].gamePoints;
                     erase_mesh(i);
                 }
