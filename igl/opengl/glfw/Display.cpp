@@ -165,7 +165,7 @@ bool Display::launch_rendering(bool loop)
 {
 	//CUBE MAP
 
-	Shader DaylightBoxShader("C:/3dAnimationCourseFinalProject/Shaders/daylightbox.vs", "C:/3dAnimationCourseFinalProject/Shaders/daylightbox.fs");
+	Shader DaylightBoxShader("C:/AnimationCourseEngine/Shaders/daylightbox.vs", "C:/AnimationCourseEngine/Shaders/daylightbox.fs");
 	unsigned int boxVAO, boxVBO;
 	glGenVertexArrays(1, &boxVAO);
 	glGenBuffers(1, &boxVBO);
@@ -175,16 +175,15 @@ bool Display::launch_rendering(bool loop)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
-
 	std::vector<std::string> faces
 	{
 		
-		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Right.jpg",
-		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Left.jpg",
-		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Top.jpg",
-		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Bottom.jpg",
-		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Back.jpg",
-		"C:/3dAnimationCourseFinalProject/textures/DayLightBox/Front.jpg"
+		"C:/AnimationCourseEngine/textures/DayLightBox/Right.jpg",
+		"C:/AnimationCourseEngine/textures/DayLightBox/Left.jpg",
+		"C:/AnimationCourseEngine/textures/DayLightBox/Top.jpg",
+		"C:/AnimationCourseEngine/textures/DayLightBox/Bottom.jpg",
+		"C:/AnimationCourseEngine/textures/DayLightBox/Back.jpg",
+		"C:/AnimationCourseEngine/textures/DayLightBox/Front.jpg"
 
 	};
 

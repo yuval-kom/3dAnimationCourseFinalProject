@@ -59,12 +59,6 @@ IGL_INLINE void Renderer::draw( GLFWwindow* window)
 	{
 		core.clear_framebuffers();
 	}
-	//int coreIndx = 1;
-	/*if (menu)
-	{
-		menu->pre_draw();
-		menu->callback_draw_viewer_menu();
-	}*/
 	for (auto& core : core_list)
 	{
 		int indx = 0;
@@ -73,7 +67,6 @@ IGL_INLINE void Renderer::draw( GLFWwindow* window)
 			
 			if (mesh.is_visible & core.id)
 			{// for kinematic chain change scn->MakeTrans to parent matrix
-				//core.draw(scn->MakeTransScale().cast<float>(), mesh);
 
 				core.draw(scn->MakeTransScale()*scn->CalcParentsTrans(indx).cast<float>(),mesh);
 			}
@@ -82,12 +75,6 @@ IGL_INLINE void Renderer::draw( GLFWwindow* window)
 
 		
 	}
-
-	/*if (menu)
-	{
-		menu->post_draw();
-		
-	}*/
 
 }
 

@@ -144,23 +144,12 @@ static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int act
 		case 'T':
 		case 't':
 		{
-			////Snake point of wiew
-			////rndr->core(0).camera_center = Eigen::Vector3f(0, 1, 0);
-			////rndr->core(0).camera_eye = Eigen::Vector3f(0, 0, 0);
-			////rndr->RotateCamera(float(scn->joints[16]->GetRotation().eulerAngles(2,0,2)[0]), float(scn->joints[16]->GetRotation().eulerAngles(2, 0, 2)[1]));
-			//rndr->core(0).camera_translation = Eigen::Vector3f(float(scn->tip_position.x()), float(scn->tip_position.y()), float(scn->tip_position.z()));
-			//rndr->core(0).camera_up = Eigen::Vector3f(float(scn->tip_position.x()), float(scn->tip_position.y()), float(scn->tip_position.z()));
-			//rndr->RotateCameraX(-10);
-			//rndr->RotateCamera(0,5);
-			////rndr->core(0).camera_eye = Eigen::Vector3f(float(scn->tip_position.x()), float(scn->tip_position.y()), float(scn->tip_position.z()));
-			////rndr->core(0).camera_translation = Eigen::Vector3f(scn->joints[0]->position.x(), scn->joints[0]->position.y(), scn->joints[0]->position.z());
 			break;
 		}
 		case 'D':
 		case 'd':
 
-		{	//Assigmnet3
-			std::cout << "destination position: " << scn->destination_position << std::endl;
+		{	
 			break;
 		}
 
@@ -178,65 +167,36 @@ static void glfw_key_callback(GLFWwindow* window, int key, int scancode, int act
 			break;
 		case 'w':
 		case 'W':
-			rndr->TranslateCamera(Eigen::Vector3f(0, 0, 0.03f));
+			rndr->TranslateCamera(Eigen::Vector3f(0.5f, 0, 0));
 			break;
 		case 's':
 		case 'S':
-			rndr->TranslateCamera(Eigen::Vector3f(0, 0, -0.03f));
+			rndr->TranslateCamera(Eigen::Vector3f(-0.5f, 0, 0));
 			break;
 		case GLFW_KEY_UP:
-			//scn->set_destination_pos(Eigen::Vector3d(0, 0.2, 0));
-			//scn->moveJoints();
+
 			scn->data_list[0].MyTranslate(Eigen::Vector3d(0, 0, 0.2), false);
-			scn->set_tip_pos();
-			/*if (rndr->IsPicked())
-				scn->data().MyRotate(Eigen::Vector3d(1, 0, 0), 0.05);
-			else*/
-				//rndr->TranslateCamera(Eigen::Vector3f(0, 0.01f,0));
-			//scn->translateData(Eigen::Vector3d(0, 0.01, 0)); //Assignment2
+
 			break;
 		case GLFW_KEY_DOWN:
-			//scn->set_destination_pos(Eigen::Vector3d(0, -0.2, 0));
-			//scn->moveJoints();
+
 			scn->data_list[0].MyTranslate(Eigen::Vector3d(0,0 , -0.2), false);
-			scn->set_tip_pos();
-			/*if (rndr->IsPicked())
-				scn->data().MyRotate(Eigen::Vector3d(1, 0, 0), -0.05);
-			else
-				rndr->TranslateCamera(Eigen::Vector3f(0, -0.01f,0));*/
-			//scn->translateData(Eigen::Vector3d(0, -0.01, 0)); //Assignment2
+
 
 			break;
 		case GLFW_KEY_LEFT:
-			//scn->set_destination_pos(Eigen::Vector3d(-0.2, 0, 0));
-			//scn->moveJoints();
-			//scn->data_list[0].MyTranslate(Eigen::Vector3d(0, -0.2, 0), false);
-			scn->data_list[0].RotateInSystem(Eigen::Vector3d(3, 0, 0), 0.05);
+
+			scn->data_list[0].RotateInSystem(Eigen::Vector3d(0, 3, 0), 0.05);
 			scn->set_tip_pos();
-			/*if(rndr->IsPicked())
-				
-			else
-				rndr->TranslateCamera(Eigen::Vector3f(-0.01f, 0,0));*/
-			//scn->translateData(Eigen::Vector3d(-0.01, 0, 0)); //Assignment2
+
 			break;
 		case GLFW_KEY_RIGHT:
-			//scn->set_destination_pos(Eigen::Vector3d(0.2,0,0));
-			scn->data_list[0].RotateInSystem(Eigen::Vector3d(3, 0, 0), -0.05);
+
+			scn->data_list[0].RotateInSystem(Eigen::Vector3d(0, 3, 0), -0.05);
 			scn->set_tip_pos();
-			//scn->data_list[0].MyTranslate(Eigen::Vector3d(0, 0.2, 0), false);
-			//scn->moveJoints();
-			//scn->Skinning();
-			/*if (rndr->IsPicked())
-				scn->data().RotateInSystem(Eigen::Vector3d(0, 0, 1), 0.05);	
-			else
-				rndr->TranslateCamera(Eigen::Vector3f(0.01f, 0, 0));*/
-			//scn->translateData(Eigen::Vector3d(0.01, 0, 0)); //Assignment2
+
 			break;
 		case ' ':
-			if (scn->isActive == true) {
-				scn->isActive = false;
-			}
-			else { scn->isActive = true; }
 			break;
 		
 		default: 

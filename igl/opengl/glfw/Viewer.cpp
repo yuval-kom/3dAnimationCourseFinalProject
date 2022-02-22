@@ -138,6 +138,7 @@ namespace glfw
       Eigen::MatrixXi F;
       if (!igl::readOFF(mesh_file_name_string, V, F))
         return false;
+      
       data().set_mesh(V,F);
     }
     else if (extension == "obj" || extension =="OBJ")
@@ -158,6 +159,7 @@ namespace glfw
         return false;
       }
 
+      
       data().set_mesh(V,F);
       if (UV_V.rows() > 0)
       {
@@ -375,16 +377,11 @@ namespace glfw
   void Viewer::AddNewShape(int savedIndx) {
 
       data().show_overlay_depth = true;
-      //data_list.back().show_faces = 3;
-      //data().show_texture = true;
       data().point_size = 10;
       data().line_width = 2;
-      //data().show_overlay = 1;
       data().show_lines = false;
       data().show_overlay_depth = 2;
       data().set_visible(true, 1);
-      //data().set_visible(false, 1);
-      //data().set_visible(true, 2);
       parents.push_back(-1);
       selected_data_index = savedIndx;
       
@@ -395,11 +392,11 @@ namespace glfw
           ViewerData* currData = &data_list[i];
           currData->MyTranslate(currData->direction, false);
           Eigen::RowVector4d objectPosition = (currData->MakeTransd() * Eigen::Vector4d(0, 0, 0, 1));
-          if (objectPosition(2) <= -5 || objectPosition(2) > 18) { //z
+          if (objectPosition(2) <= 5 || objectPosition(2) > 50) { //z
               currData->direction << currData->direction(0), currData->direction(1), -currData->direction(2);
           }
-          if (objectPosition(1) > 18 || objectPosition(1) < -18) { //y
-              currData->direction << currData->direction(0), -currData->direction(1), currData->direction(2);
+          if (objectPosition(0) > 10|| objectPosition(0) < -10) { //x
+              currData->direction << -currData->direction(0), currData->direction(1), currData->direction(2);
           }
 
       }
@@ -413,17 +410,17 @@ namespace glfw
       {
       case 0:
           numToAdd = 3;
-          dir = Vector3d(0, -0.03, 0.03);
+          dir = Vector3d(-0.03,0, 0.03);
           break;
       case 1:
           numToAdd = 4; 
-          dir = Vector3d(0, 0.06, -0.06);
+          dir = Vector3d(0.06, 0, -0.06);
           for (int i = 1; i < numToAdd - 1; i++) {
-              load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/cube.obj");
+              load_mesh_from_file("C:/AnimationCourseEngine/tutorial/data/cube.obj");
               int currIndex = data_list.size() - 1;
               AddNewShape(currIndex);
               data_list[currIndex].isPrize = false;
-              data_list[currIndex].MyTranslate(Eigen::Vector3d(0, rand() % 10 + double(i) * 2, rand() % 10 - double(i) * 2), false);
+              data_list[currIndex].MyTranslate(Eigen::Vector3d(rand() % 5, 0, rand() % 45 + double(i) * 2), false);
               data_list[currIndex].gamePoints = -1;
               data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
               data_list[currIndex].set_colors(Eigen::RowVector3d(0.6, 0.2, 0.1));
@@ -435,11 +432,11 @@ namespace glfw
 
       ScoreGoal = (numToAdd * 5);
       for (int i = 1; i <= numToAdd; i++) {
-          load_mesh_from_file("C:/3dAnimationCourseFinalProject/tutorial/data/sphere.obj");
+          load_mesh_from_file("C:/AnimationCourseEngine/tutorial/data/sphere.obj");
           int currIndex = data_list.size() - 1;
           AddNewShape(currIndex);
           data_list[currIndex].isPrize = true;
-          data_list[currIndex].MyTranslate(Eigen::Vector3d(0, rand() % 10 + double(i) * 2, rand() % 10 - double(i) * 2), false);
+          data_list[currIndex].MyTranslate(Eigen::Vector3d(rand()%5,0,rand() % 45 + double(i) * 2), false);
           data_list[currIndex].gamePoints = 5;
           data_list[currIndex].tree.init(data_list[currIndex].V, data_list[currIndex].F);
           data_list[currIndex].direction = dir;
@@ -455,15 +452,15 @@ namespace glfw
       data_list[0].MyTranslate((data_list[0].MakeTransd().inverse() * Vector4d(0, 0, 0, 1)).head(3), false);
       data_list[0].MyRotate(data_list[0].GetRotation().inverse());
       time(&level_start_time);
-      PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
       isDuringLevel = true;
       isActive = true;
 
   }
 
   void Viewer::playBiteSound() {
-      PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/bite.wav"), NULL, SND_FILENAME);
-      PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/bite.wav"), NULL, SND_FILENAME);
+      PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameSound.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
   }
 
   void Viewer::resetScene(bool isWon) {
@@ -474,58 +471,17 @@ namespace glfw
       }
       if (isWon) {
          std::cout << " Finish level";
-         PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/WinLevel.wav"), NULL, SND_FILENAME);
+         PlaySound(TEXT("C:/AnimationCourseEngine/sounds/WinLevel.wav"), NULL, SND_FILENAME);
          isDuringLevel = false;
          isWonLevel = true;
          level++;
       }
       else {
-          PlaySound(TEXT("C:/3dAnimationCourseFinalProject/sounds/GameOver.wav"), NULL, SND_FILENAME);
+          PlaySound(TEXT("C:/AnimationCourseEngine/sounds/GameOver.wav"), NULL, SND_FILENAME);
           std::cout << " YOU LOSE!";
           isDuringLevel = false;
           isWonLevel = false;
       }
-  }
-
-  void Viewer::drawBox(Eigen::AlignedBox<double, 3>* box, int index) {
-
-      Eigen::VectorXd c = box->center();
-      Eigen::MatrixXd V_box(8, 3);
-      V_box <<
-          c.x() - box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
-          c.x() - box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2,
-          c.x() - box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
-          c.x() + box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
-          c.x() - box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2,
-          c.x() + box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() - box->sizes()(2) / 2,
-          c.x() + box->sizes()(0) / 2, c.y() - box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2,
-          c.x() + box->sizes()(0) / 2, c.y() + box->sizes()(1) / 2, c.z() + box->sizes()(2) / 2;
-
-      // Edges of the bounding box
-      Eigen::MatrixXi E_box(12, 2);
-      E_box <<
-          0, 1,
-          0, 2,
-          1, 4,
-          3, 0,
-          1, 6,
-          2, 4,
-          2, 5,
-          6, 3,
-          5, 3,
-          7, 5,
-          7, 6,
-          7, 4;
-
-      data_list[index].add_points(V_box, Eigen::RowVector3d(1, 0, 0));
-
-      for (unsigned i = 0; i < E_box.rows(); ++i)
-          data_list[index].add_edges
-          (
-              V_box.row(E_box(i, 0)),
-              V_box.row(E_box(i, 1)),
-              Eigen::RowVector3d(1, 0, 0)
-          );
   }
 
   

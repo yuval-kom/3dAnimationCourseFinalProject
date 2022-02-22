@@ -22,27 +22,7 @@ public:
 	void Init(const std::string& config);
 	double doubleVariable;
 	void initDataStructure(Eigen::MatrixXd&, Eigen::MatrixXi&);
-	//void simplification();
-	//Assignment2
-	void translateData(Eigen::Vector3d dir);
 	
-	
-	
-	/*Eigen::Vector3d startPos;
-    vector<Eigen::Vector3d> positions;
-	vector<Eigen::Vector3d> tmpPositions;*/
-
-	
-	//void IK_solver();
-	////void printEulerAngles();
-	////void setEulerAngles();
-	//void setPositions();
-	//void backward();
-	//void forward();
-	//void RotateJoints();
-	//void fabrik();
-
-	//Project
 	
 	std::vector<igl::opengl::Joint*> joints;
 	Eigen::VectorXi P; //parents for joints
@@ -68,17 +48,6 @@ public:
 	void normalizeToOne(int i);
 
 private:
-	// Prepare array-based edge data structures and priority queue
-	/*vector<Eigen::VectorXi*> EMAP;
-	vector<Eigen::MatrixXi*> E, EF, EI;
-	typedef set<std::pair<double, int>> PriorityQueue;
-	vector<PriorityQueue*> Q;
-	vector<vector<PriorityQueue::iterator>> Qit;
-	vector<Eigen::MatrixXd*> C;
-	vector<int> num_collapsed;
-
-	vector<vector<Eigen::Matrix4d>> vertexsQ;
-	vector<int> currCollapseEdge;*/
 
 	//Project
 	Eigen::MatrixXd W;
@@ -96,24 +65,14 @@ private:
 	RotationList vQ; //rotation of joints
 	vector<Eigen::Vector3d> vT; //translation of joints
 
+	void scaleSnake();
 	void calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F);
 
-	//void calc_vertex_cost(const Eigen::MatrixXd& V, const Eigen::MatrixXi& F, const Eigen::MatrixXi& E);
-	//void printInfo(const int e, double& cost,Eigen::RowVectorXd& p);
-
-	//Assignmet 2
-	/*double pos = -1;
-	vector<igl::AABB<Eigen::MatrixXd, 3>*> trees;
-	vector<igl::AABB<Eigen::MatrixXd, 3>*> subTrees;*/
-	
-	vector<Eigen::Vector3d> velocitiesByLevel;
+	void setTexture(Eigen::MatrixXd& V, Eigen::MatrixXi& F);
 	
 	bool checkConditions(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
 	bool collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eigen::MatrixXd, 3>* Btree, size_t i);
 
-	//Assignment 3
-	//void setInitialPosition();
-	void drawAxis(size_t i);
 	bool isTooFar();
 	
 	void Animate();

@@ -12,6 +12,10 @@
 #include <igl/jet.h>
 #include <igl/slice.h>
 #include <igl/slice_into.h>
+#include <igl/boundary_loop.h>
+#include <igl/harmonic.h>
+#include <igl/map_vertices_to_circle.h>
+#include <igl/lscm.h>
 #include <map>
 
 
@@ -52,30 +56,19 @@ void SandBox::Init(const std::string& config)
             data().show_overlay_depth = 2;
             data().set_visible(true, 1);
             parents.push_back(-1);
-            
-           // //Assignmet1
-           // initDataStructure(data().V, data().F);
-           // //Assignemt 2
-           //data().MyTranslate(Eigen::Vector3d(pos, 0, -1), true);
-           // pos = pos + 1.8;
-           // drawBox(&trees[selected_data_index]->m_box, selected_data_index);
 
         }
         nameFileout.close();
     }
 
-    
-    data_list[0].MyScale(Vector3d(1, 1, 5));
+    scaleSnake();
+    //data_list[0].MyScale(Vector3d(1, 1, 5));
     add_joints();
     drawJoints();
     initDataStructure(data_list[0].V, data_list[0].F);
     MyTranslate(Eigen::Vector3d(0, 0, -14), true);
-    //setVelocity(Eigen::Vector3d(-0.009, 0, 0));
-    drawAxis(0);
-    //MyTranslate(Eigen::Vector3d(0, 0, -1), true);
-    //data().set_colors(Eigen::RowVector3d(0.9, 0.1, 0.1));
-
-    //set_destination_pos(Vecto);
+    //data().set_colors(Eigen::RowVector3d(0.5, 0.5 , 0.1));
+    setTexture(data_list[0].V, data_list[0].F);
 }
 
 SandBox::~SandBox()
@@ -84,20 +77,25 @@ SandBox::~SandBox()
 
 }
 
+void SandBox::scaleSnake() {
+    for (int i = 0; i < data_list[0].V.rows(); i++) {
+        data_list[0].V.row(i).z() = data_list[0].V.row(i).z() * 5;
+    }
+
+}
 void SandBox::add_joints() {
     JointsPoses.resize(17);
     joints.resize(17);
     P.resize(17);
     C.resize(17, 3);
-    Vector3d currPos = Vector3d(0, 0, -0.8);
+    Vector3d currPos = Vector3d(0, 0, -4);
     for (int i = 0; i < num_of_joints; i++) {
         Joint* curr_joint = new Joint(currPos, i);
         C.row(i) = currPos;
-        //cout << "i: " << i << " pos: " << currPos << endl;
         JointsPoses[i] = currPos;
         joints[i] = curr_joint;
         P[i] = i - 1;
-        currPos = currPos + Vector3d(0, 0, 0.1);
+        currPos = currPos + Vector3d(0, 0, 0.5);
     }
 }
 void SandBox::drawJoints() {
@@ -133,10 +131,96 @@ void SandBox::drawJoints() {
     data_list[0].set_edges(V_box, BE, Eigen::RowVector3d(1, 0, 1));
 }
 
-void SandBox::drawAxis(size_t i) {
-    data_list[i].add_edges(Eigen::RowVector3d(-1.6, 0, 0.8), Eigen::RowVector3d(1.6, 0, 0.8), Eigen::RowVector3d(1, 0, 0)); // x axis - red
-    data_list[i].add_edges(Eigen::RowVector3d(0, -1.6, 0.8), Eigen::RowVector3d(0, 1.6, 0.8), Eigen::RowVector3d(0, 1, 0)); // y axis - green
-    data_list[i].add_edges(Eigen::RowVector3d(0, 0, -0.8), Eigen::RowVector3d(0, 0, 1.6), Eigen::RowVector3d(0, 0, 1)); // z axis - blue
+void SandBox::setTexture(Eigen::MatrixXd& V, Eigen::MatrixXi& F) {
+    
+    MatrixXd V1, V2;
+    MatrixXi F1, F2;
+    std::map<int, int> VtoV1;
+    std::map<int, int> VtoV2;
+
+    int ind1 = 0;
+    int ind2 = 0;
+
+    for (int i = 0; i < V.rows(); i++) {
+        if (V.row(i).z() >= -4)
+            ind1++;
+        else
+            ind2++;
+    }
+
+    V1.resize(ind1, 3);
+    V2.resize(ind2, 3);
+
+    ind1 = 0;
+    ind2 = 0;
+
+    for (int i = 0; i < V.rows(); i++) {
+        if (V.row(i).z() >= -4) {
+            V1.row(ind1) = V.row(i);
+            VtoV1[i] = ind1;
+            ind1++;
+        }
+        else {
+            V2.row(ind2) = V.row(i);
+            VtoV2[i] = ind2;
+            ind2++;
+        }
+    }
+
+    ind1 = 0;
+    ind2 = 0;
+    for (int i = 0; i < F.rows(); i++) {
+        int numOfV = 0;
+        for (int j = 0; j <= 2; j++) {
+            if (VtoV1.count(F(i, j)) > 0) {
+                numOfV++;
+            }
+        }
+        if (numOfV == 3) {
+            ind1++;
+        }
+        else {
+            ind2++;
+        }
+    }
+    F1.resize(ind1, 3);
+    F2.resize(ind2, 3);
+
+    ind1 = 0;
+    ind2 = 0;
+
+    for (int i = 0; i < F.rows(); i++) {
+        int numOfV = 0;
+        for (int j = 0; j <= 2; j++) {
+            if (VtoV1.count(F(i, j)) > 0) {
+                numOfV++;
+            }
+        }
+        if (numOfV == 3) {
+            F1.row(ind1) << VtoV1[F(i, 0)], VtoV1[F(i, 1)], VtoV1[F(i, 2)];
+            ind1++;
+        }
+        else {
+            F2.row(ind2) << VtoV2[F(i, 0)], VtoV2[F(i, 1)], VtoV2[F(i, 2)];
+            ind2++;
+        }
+    }
+    // Fix two points on the boundary
+    MatrixXd V_uv1, V_uv2;
+    VectorXi bnd1, b1(2, 1), bnd2, b2(2,1);
+    igl::boundary_loop(F1, bnd1);
+    b1(0) = bnd1(0);
+    b1(1) = bnd1(bnd1.size()/2);
+    MatrixXd bc(2, 2);
+    bc << 0, 0, 1, 0;
+    igl::lscm(V1, F1, b1, bc, data().V_uv);
+
+    data().V_uv *= 5;
+
+    Eigen::Matrix<unsigned char, Eigen::Dynamic, Eigen::Dynamic> R, G, B, A;
+    igl::png::readPNG("C:/AnimationCourseEngine/tutorial/textures/snake1.png", R, G, B, A);
+    data_list[0].set_texture(R, G, B);
+
 }
 
 double SandBox::calc_related_distance(int i) {
@@ -191,10 +275,15 @@ void SandBox::add_weights() {
 }
 
 Vector3d SandBox::getJoint(int indx) {
-    Vector3d joint = joints[0]->GetRotation() * Vector3d(0, 0, -0.8);
+    /*Vector3d joint =  (joints[0]->MakeTransd() * Eigen::Vector4d(0, 0, -4, 1)).head(3);
+    for (int i = 1; i <= indx; i++) {
+        Matrix4d R = CalcParentsTransJoint(i);
+        joint = joint + (R * Vector4d(0, 0, 0.5,1)).head(3);
+    }*/
+    Vector3d joint = joints[0]->GetRotation() * Vector3d(0, 0, -4);
     for (int i = 1; i <= indx; i++) {
         Matrix3d R = CalcParentsRot(i);
-        joint = joint + R * Vector3d(0, 0, 0.1);
+        joint = joint + R * Vector3d(0, 0, 0.5);
     }
 
     return joint;
@@ -231,7 +320,8 @@ void SandBox::set_destination_pos(Eigen::Vector3d dir) {
 }
 
 void SandBox::set_tip_pos() {
-    tip_position = (CalcParentsTransJoint(num_of_links) * joints[num_of_joints - 1]->MakeTransd() * Eigen::Vector4d(0, 0, 0.05, 1)).head(3);
+    tip_position = getJoint(16);
+        //(CalcParentsTransJoint(num_of_links) * joints[num_of_joints - 1]->MakeTransd() * Eigen::Vector4d(0, 0, 0.25, 1)).head(3);
 }
 
 bool SandBox::isTooFar() {
@@ -320,168 +410,36 @@ void SandBox::moveJoints()
         //Vector3d destination = tip_position + Vector3d(4, 0, 0);
         for (int i = num_of_joints - 1; i > -1; i = P[i]) {
             Vector3d currJoint = getJoint(i);
-            //cout << " currJoint" << i << ": " << currJoint << endl;
+            cout << " currJoint" << i << ": " << currJoint << endl;
             Vector3d vec1 = (destination_position - currJoint);
             Vector3d vec2 = (tip_position - currJoint);
+            cout << " tip: " <<  tip_position << endl;
             Eigen::Quaterniond quat = Eigen::Quaterniond::FromTwoVectors(vec1, vec2);
             //Eigen::Matrix4d mat = CalcParentsTransJoint(i);
-            Eigen::Matrix3d mat = Eigen::Matrix3d::Identity();
+            Eigen::Matrix4d mat = Eigen::Matrix4d::Identity();
             for (int j = i; j > -1; j--) {
-                mat = mat * joints[i]->GetRotation();
+                mat = mat * joints[i]->MakeTransd();
             }
             quat = quat.slerp(0.95, Eigen::Quaterniond::Identity());
             //vQ[i] = quat;
+
+            double distance = (tip_position - destination_position).norm();
+            cout << "distance " << distance << endl;
+
             joints[i]->RotateInSystem(mat.block<3, 3>(0, 0), quat);
             C.row(i) = getJoint(i);
-            //cout << i << " pos: " << C.row(i) << endl;
+            cout << i << " pos: " << C.row(i) << endl;
             set_tip_pos();
-            drawJoints();
-            /*double distance = (tip_position - destination_position).norm();
-            if (distance <= 0.1) {
-                isNotReach = false;
-            }*/
+            //drawJoints();
+           
+            //if (distance <= 0.1) {
+            //    cout << "distance " << distance << endl;
+            //    //isNotReach = false;
+            //}
         }
     //}
     
 }
-
-//void SandBox::IK_solver(){
-//
-//    
-//    set_tip_pos();
-//    //Vector3d destination = JointsPoses[0] + Vector3d(4, 0, 0);
-//    for (int i = links_number; i > 0; i = parents[i]) {
-//        Vector3d currJoint = getJoint(i);
-//        //cout << " currJoint" << i << ": " << currJoint << endl;
-//        Vector3d vec1 = (destination_position - currJoint);
-//        Vector3d vec2 = (tip_position - currJoint);
-//        Eigen::Quaterniond quat = Eigen::Quaterniond::FromTwoVectors(vec1, vec2);
-//        Eigen::Matrix4d mat = CalcParentsTrans(i);
-//        quat = quat.slerp(0.95, Eigen::Quaterniond::Identity());
-//        //vQ[i] = quat;
-//        data_list[i].RotateInSystem(mat.block<3, 3>(0, 0), quat);
-//        set_tip_pos();
-//        
-//    }
-//    /*if (isTooFar())
-//    {
-//        cout << "cannot reach" << endl;
-//        return;
-//    }
-//    for (size_t i = links_number; i > 0; i--) {
-//        
-//        Vector3d E = tip_position;
-//        Vector3d D = destination_position;
-//        Vector3d R = getJoint(i);
-//        Vector3d RE = (E - R).normalized();
-//        Vector3d RD = (D - R).normalized();
-//
-//        double distance = (D - E).norm();
-//        if (distance < 0.1) {
-//            isActive = false;
-//            setEulerAngles();
-//            std::cout << "distance " << distance << endl;
-//            return;
-//        }
-//        
-//        double cos_angle = RE.dot(RD);
-//        if (cos_angle < -1) {
-//            cos_angle = -1;
-//        }
-//        else if (cos_angle > 1) {
-//            cos_angle = 1;
-//        }
-//        
-//        Eigen::Vector3d vecToRotate = RE.cross(RD);
-//        double angle = acos(cos_angle)/10;
-//
-//        data_list[i].RotateInSystem(vecToRotate, angle);
-//        set_tip_pos();
-//    }*/
-//
-//}
-
-
-//void SandBox::setPositions() {
-//    set_tip_pos();
-//
-//    for (int i = 1; i <= links_number; i++) {
-//       positions[i -1] = getJoint(i);
-//    }
-//    startPos = positions[0];
-//    positions[links_number] = tip_position;
-//}
-
-//from linknum to 1
-//void SandBox::forward() {
-//    tmpPositions[links_number] = destination_position;
-//    for (signed int i = links_number - 1; i >= 0; i--){
-//            double ri = (tmpPositions[i + 1] - tmpPositions[i]).norm();
-//            double lambda = 1.6 / ri;
-//            Vector3d newPos = (((1-lambda) * tmpPositions[i + 1]) + (lambda * tmpPositions[i])).normalized();
-//            tmpPositions[i] = newPos;
-//    }
-//}
-
-//from 1 to linknum
-//void SandBox::backward() {
-//    tmpPositions[0] = startPos;
-//    for (size_t i = 0; i < links_number; i++) {
-//        double ri = (tmpPositions[i + 1] - tmpPositions[i]).norm();
-//        double lambda = 1.6 / ri;
-//        Vector3d newPos = (((1 - lambda) * tmpPositions[i]) + (lambda * tmpPositions[i+1])).normalized();
-//
-//        tmpPositions[i+1] = newPos;
-//    }
-//}
-
-//void SandBox::RotateJoints() {
-//    for (size_t i = 0; i < links_number; i++) {
-//
-//        Vector3d oldVector = (positions[i +1] - positions[i]).normalized();
-//        Vector3d newVector = (tmpPositions[i + 1] - tmpPositions[i]).normalized();
-//
-//        double cos_angle = newVector.dot(oldVector);
-//        if (cos_angle < -1) {
-//            cos_angle = -1;
-//        }
-//        else if (cos_angle > 1) {
-//            cos_angle = 1;
-//        }
-//        Eigen::Vector3d vecToRotate = newVector.cross(oldVector);
-//        double angle = acos(cos_angle) / 10;
-//
-//        data_list[i+1].MyRotate((CalcParentsRot(i+1) * data_list[i+1].GetRotation()).inverse() * (-vecToRotate), angle);
-//        setPositions();
-//    }
-//}
-
-//void SandBox::fabrik() {
-//    
-//    double distance = (tip_position - destination_position).norm();
-//    if (isTooFar())
-//    {
-//        cout << "cannot reach" << endl;
-//        isActive = false;
-//        return;
-//    }
-//    if (distance > 0.1)
-//    {
-//        tmpPositions = positions;
-//        forward();
-//       backward();
-//        RotateJoints();
-//    }
-//    else {
-//        cout << "distance: " << distance << endl;
-//        isActive = false;
-//        return;
-//    }
-//   
-//}
-
-
-
 
 void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
 {
@@ -489,8 +447,6 @@ void SandBox::initDataStructure(Eigen::MatrixXd& V, Eigen::MatrixXi& F)
     W.resize(data_list[0].V.rows(), joints.size() - 1);
     add_weights();
     calcTreeForSnakeHead(V,F);
-    //data_list[0].tree.init(data_list[0].V, data_list[0].F);
-    drawBox(&data_list[0].tree.m_box, 0);
 
     RotationList rest_pose;
     igl::directed_edge_orientations(C, BE, rest_pose);
@@ -511,7 +467,7 @@ void SandBox::calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F) {
     std::map<int, int> VtoVhead;
     int index = 0;
     for (int i = 0; i < V.rows(); i++) {
-        if (V.row(i).z() >= 0.6 && V.row(i).z() <= 0.8) {
+        if (V.row(i).z() >= 2.5 && V.row(i).z() <= 4) {
             V_Head = V.row(i);
             index++;
         }
@@ -519,7 +475,7 @@ void SandBox::calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F) {
     V_Head.resize(index, 3);
     index = 0;
     for (int i = 0; i < V.rows(); i++) {
-        if (V.row(i).z() >= 0.6 && V.row(i).z() <= 0.8) {
+        if (V.row(i).z() >= 2.5 && V.row(i).z() <= 4) {
              V_Head.row(index) = V.row(i);
              VtoVhead[i] = index;
              index++;
@@ -553,14 +509,6 @@ void SandBox::calcTreeForSnakeHead(Eigen::MatrixXd& V, Eigen::MatrixXi& F) {
     }
 
     data_list[0].tree.init(V_Head, F_Head);
-    /*cout << "VtoVhead:" << endl;
-    for (auto const& pair: VtoVhead) {
-        cout << '[' << pair.first << ']' << pair.second << endl;
-    }
-     << "V:" << endl;
-    cout << V_Head << endl;
-    cout << "F:" << endl;
-    cout << F_Head << endl;*/
 }
 
 
@@ -730,10 +678,6 @@ bool SandBox::collisionDetec(igl::AABB<Eigen::MatrixXd, 3>* Atree, igl::AABB<Eig
         }
     }
     return false;
-}
-
-void SandBox::translateData(Eigen::Vector3d dir) {
-    //velocities[selected_data_index] = dir;
 }
 
 void SandBox::Animate()

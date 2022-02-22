@@ -10,23 +10,19 @@ int main(int argc, char *argv[])
 
   SandBox viewer;
   
-  //igl::opengl::glfw::imgui::ImGuiMenu* menu = new igl::opengl::glfw::imgui::ImGuiMenu();
   igl::opengl::glfw::imgui::ImGuiMenu* game_menu = new igl::opengl::glfw::imgui::ImGuiMenu();
 
-  viewer.Init("C:/3dAnimationCourseFinalProject/build/tutorial/sandBox/configuration.txt");
+  viewer.Init("C:/AnimationCourseEngine/build/tutorial/sandBox/configuration.txt");
   
-  /*viewer.MyRotate(Eigen::Vector3d(2, 0.041, 0.03), 85.9);
-  viewer.MyRotate(Eigen::Vector3d(0, 1, 0), 190);*/
   Init(*disp, game_menu);
-  //game_menu->init_game_menu(disp);
 
   renderer.init(&viewer, game_menu);
   
   disp->SetRenderer(&renderer);
-  disp->SetRenderer(&renderer);
-  renderer.core(0).camera_up = Eigen::Vector3f(float(viewer.tip_position.x()), float(viewer.tip_position.y()), float(viewer.tip_position.z()));
-  renderer.RotateCameraX(90);
-  viewer.MyTranslate(Eigen::Vector3d(35, 0, 5), false);
+
+  renderer.core(0).camera_eye += Eigen::Vector3f(0, 0.1, -6);
+
+  renderer.TranslateCamera(Eigen::Vector3f(0, -4, 20));
   
   disp->launch_rendering(true);
   delete game_menu;

@@ -124,14 +124,11 @@ namespace glfw
 
 	Eigen::Matrix4d CalcParentsTrans(int indx);
 	inline bool SetAnimation() { return isActive = !isActive; }
-
-    //For Assignmet3
-    void AddNewShape(int savedIndx);
-
+    
     //Project
+    void AddNewShape(int savedIndx);
     void start_level();
     void resetScene(bool isWon);
-    void drawBox(Eigen::AlignedBox<double, 3>* box, int index); 
     void moveObjects();
     void playBiteSound();
 
@@ -166,7 +163,7 @@ public:
 
     //int links_number = 3;
     //double link_Len = 1.6;
-    Eigen::Vector3d tip_position = Eigen::Vector3d(0, 0, 0.8);
+    Eigen::Vector3d tip_position = Eigen::Vector3d(0, 0, 4);
     Eigen::Vector3d destination_position = Eigen::Vector3d(5, 0, 0);
 
     // List of registered plugins
